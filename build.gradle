@@ -14,5 +14,6 @@ repositories {
 dependencies {
     compile project(':java-console-table')
     compile project(':java-text-and-file-util')
+    compile project(':java-shell-util')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

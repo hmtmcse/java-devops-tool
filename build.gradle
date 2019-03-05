@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'com.hmtmcse'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':java-console-table')
+    compile project(':java-text-and-file-util')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

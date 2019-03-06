@@ -1,4 +1,4 @@
-package com.hmtmcse.devops.test.data;
+package com.hmtmcse.devops.data;
 
 public class Task {
 

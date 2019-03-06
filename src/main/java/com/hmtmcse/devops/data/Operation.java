@@ -1,4 +1,4 @@
-package com.hmtmcse.devops.test.data;
+package com.hmtmcse.devops.data;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -29,6 +29,7 @@ nginx
 ifElse
 loop
 
+Report Generator
 
 Executor
 -------------

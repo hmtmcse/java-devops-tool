@@ -1,0 +1,41 @@
+{
+  "task": "This Task for Something",
+  "actions": [
+    {
+      "action": "copy",
+      "destination": "",
+      "source": "",
+      "options": {
+        "removeDest": true,
+        "recursive": true,
+        "copyLink": true
+      }
+    },
+    {
+      "action": "move",
+      "destination": "",
+      "source": "",
+      "options": {
+        "removeDest": true,
+        "copyLink": true
+      }
+    },
+    {
+      "action": "remove",
+      "destination": "",
+      "options": {
+        "recursive": true,
+        "force": true,
+        "copyLink": true
+      }
+    },
+    {
+      "action": "makeDir",
+      "destination": "",
+      "options": {
+        "recursive": true,
+        "removeDest": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+    "seLinux" : {
+
+    },
+
+
+    "permission": {
+        "owner": {
+            "user" : "",
+            "group" : ""
+        },
+        "recursive": true,
+        "access": "755"
+    },
+
+
+    "linuxUser": {
+        "action": "create / remove",
+        "group": "",
+        "user": ""
+    },
+
+    "archive": {
+        "action": "create / extract",
+        "type": "tar / zip",
+        "variation": "-C",
+        "source": "",
+        "removeDest": true,
+        "destination": "",
+        "switch": "-xzf / -czf"
+    },
+
+    "linuxService": {
+        "flavor" : "centOS",
+        "templateLocation" : "",
+        "serviceName" : "",
+        "action" : "install / remove / enable / disable",
+        "findReplace" : {
+            "__KEY__" : "value"
+        }
+    },
+
+    "runCommand": {
+        "runFrom": "",
+        "command" : [
+            "x",
+            "y",
+            "z"
+        ]
+    },
+
+    "findReplace": {
+        "template" : "",
+        "placeTo" : "",
+        "removeDest": true,
+        "keyValue" : {
+            "__KEY__" : "value"
+        }
+    },
+
+    "mySQL": {
+        "host": "",
+        "user": "",
+        "password": "",
+        "database": "",
+        "actions": [
+            {
+                "name": "dump",
+                "action": "dump",
+                "table" : "optional",
+                "store" : ""
+            },
+            {
+                "action": "restore",
+                "source" : ""
+            },
+            {
+                "name": "habijabi",
+                "action": "sql",
+                "table" : "optional",
+                "sql" : ""
+            }
+        ]
+
+    }
+}

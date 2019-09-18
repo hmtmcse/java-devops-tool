@@ -1,6 +1,6 @@
-package com.hmtmcse.devops.common
+package com.hmtmcse.devops.task.action
 
-class DevOpsConst {
+class ActionConst {
 
     public static final ACTION = [
             COPY : "copy",

@@ -20,6 +20,7 @@ class Action {
     public OSPermission osPermission
     public SELinux seLinux
     public ShellCommand shellCommand
+    public Ansible ansible
 
 
 }

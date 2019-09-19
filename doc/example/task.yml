@@ -9,3 +9,19 @@ actions:
         __ip__: '127.0.0.1'
         __port__: 80
         __doc_root__: '/opt/container/'
+
+
+
+  - name: 'Copy Task'
+  - name: 'Move Task'
+  - name: 'Remove Task'
+  - name: 'Make Directory'
+  - name: 'SELinux Task'
+  - name: 'Operating System Permission'
+  - name: 'Linux User Operation'
+  - name: 'Archiving Something'
+  - name: 'Linux Service Operation'
+  - name: 'Run Command in Shell or Bash'
+  - name: 'MySQL Operation'
+  - name: 'Ansible Task Runner'
+  - name: 'Play with Soft Link'

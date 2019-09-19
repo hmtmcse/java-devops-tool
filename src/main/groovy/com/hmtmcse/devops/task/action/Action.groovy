@@ -5,13 +5,16 @@ import com.hmtmcse.devops.task.action.command.*
 
 class Action {
 
+    public String linuxSudo = false
+
     public String name
-    public Boolean linuxSudo = false
-    public String actionName
-    public String destination
-    public String source
     public Options options
 
+    public Copy copy
+    public MakeDir makeDir
+    public Move move
+    public Remove remove
+    public SoftLink softLink
 
     public Archive archive
     public FindReplace findReplace

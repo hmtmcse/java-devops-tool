@@ -1,6 +1,7 @@
-plugins {
-    id 'java'
-}
+
+
+apply plugin : 'java'
+apply plugin : 'groovy'
 
 group 'com.hmtmcse'
 version '1.0-SNAPSHOT'

@@ -1,5 +1,6 @@
 name: 'Deploy Container & Install App'
 actions:
+
   - name: 'Find & Replace Container Config'
     findReplace:
       template : '/opt/template/config.txt'
@@ -9,7 +10,6 @@ actions:
         __ip__: '127.0.0.1'
         __port__: 80
         __doc_root__: '/opt/container/'
-
 
   - name: 'Copy Task'
     copy:

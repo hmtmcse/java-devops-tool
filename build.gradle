@@ -12,7 +12,6 @@ repositories {
 }
 
 dependencies {
-    compile project(':java-console-table')
     compile project(':java-text-and-file-util')
     compile project(':java-shell-util')
     compile 'org.codehaus.groovy:groovy-all:2.5.6'

@@ -6,6 +6,7 @@ import com.hmtmcse.devops.task.action.command.*
 class Action {
 
     public String name
+    public Boolean linuxSudo = false
     public String actionName
     public String destination
     public String source

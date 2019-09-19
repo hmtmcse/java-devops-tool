@@ -11,10 +11,32 @@ actions:
         __doc_root__: '/opt/container/'
 
 
-
   - name: 'Copy Task'
+    copy:
+      source: ''
+      destination: ''
+      options:
+        removeDest: false
+        recursive: true
+        copyLink: false
+
+
   - name: 'Move Task'
+    move:
+      source: ''
+      destination: ''
+      options:
+        removeDest: false
+        copyLink: false
+
   - name: 'Remove Task'
+    remove:
+      path: ''
+      options:
+        recursive: true
+        force: true
+        removeLink: false
+
   - name: 'Make Directory'
   - name: 'SELinux Task'
   - name: 'Operating System Permission'

@@ -1,0 +1,4 @@
+debugTest: true
+printConsoleOutput: true
+printAction: true
+failedContinue: true

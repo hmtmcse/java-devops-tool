@@ -22,7 +22,7 @@ class InputToTask {
     }
 
 
-    public Task executeFromYMLFile(String location, String variableLoc) throws DevOpsException {
+    public Task loadFromYMLFile(String location, String variableLoc) throws DevOpsException {
         if (isExist(location)){
             try {
                 YmlReader ymlReader = new YmlReader()
@@ -40,18 +40,18 @@ class InputToTask {
     }
 
 
-    public Task executeFromYMLFile(String location) throws DevOpsException {
-        return executeFromYMLFile(location, null)
+    public Task loadFromYMLFile(String location) throws DevOpsException {
+        return loadFromYMLFile(location, null)
     }
 
 
 
-    public Task executeFromJSONFile(String location) throws DevOpsException {
-        return executeFromJSONFile(location, null)
+    public Task loadFromJSONFile(String location) throws DevOpsException {
+        return loadFromJSONFile(location, null)
     }
 
 
-    public Task executeFromJSONFile(String location, String variableLoc) throws DevOpsException {
+    public Task loadFromJSONFile(String location, String variableLoc) throws DevOpsException {
         if (isExist(location)){
             try {
                 JsonReadWrite jsonReadWrite = new JsonReadWrite()

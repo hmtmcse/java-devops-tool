@@ -14,7 +14,8 @@ class InputToTaskTest extends Specification {
     }
 
     def "Test TestContent Path Availability" (){
-        expect:
+
+        expect: "Test Content Path will not null."
          testContentPath != null
          println(testContentPath)
     }

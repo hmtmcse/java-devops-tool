@@ -37,12 +37,41 @@ actions:
         removeLink: false
 
   - name: 'Make Directory'
+    makeDir:
+      path: ''
+      options:
+        recursive: true
+        removeDest: false
+
+  - name: 'Create Soft Link'
+    softLink:
+      source: ''
+      destination: ''
+      options:
+        removeDest: false
+
+  - name: 'Archiving Something'
+    archive:
+      type: ''
+      action: ''
+      variation: ''
+      source: ''
+      destination: ''
+      options:
+        switch: ''
+        removeDest: false
+
+  - name: 'Run Command in Shell or Bash'
+    runCommand:
+      runFrom: ''
+      command:
+        - 'cp'
+        - '-a'
+
+
   - name: 'SELinux Task'
   - name: 'Operating System Permission'
   - name: 'Linux User Operation'
-  - name: 'Archiving Something'
   - name: 'Linux Service Operation'
-  - name: 'Run Command in Shell or Bash'
   - name: 'MySQL Operation'
   - name: 'Ansible Task Runner'
-  - name: 'Play with Soft Link'

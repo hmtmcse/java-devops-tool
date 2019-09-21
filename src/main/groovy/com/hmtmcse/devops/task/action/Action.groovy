@@ -5,7 +5,7 @@ import com.hmtmcse.devops.task.action.command.*
 
 class Action {
 
-    public String linuxSudo = false
+    public String runAs = ActionConst.RUN_AS_APP
 
     public String name
     public Options options

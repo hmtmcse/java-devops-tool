@@ -1,11 +1,14 @@
 package com.hmtmcse.devops.task.action
 
+import com.hmtmcse.devops.common.Config
+import com.hmtmcse.devops.task.model.TaskListener
+
 class Task {
 
+    public Config config
     public String name
-    public Boolean failedContinue = false
-    public Boolean showConsoleLog = false
-    public Boolean showCommand = false
     public List<Action> actions
     public Map<String, String> inheritTask = [:]
+    public Map<String, String> variables = [:]
+    public TaskListener taskListener = null
 }

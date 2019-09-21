@@ -17,4 +17,7 @@ class ActionConst {
     public static final String SE_LINUX = "seLinux"
     public static final String SHELL_COMMAND = "shellCommand"
 
+    public static final String RUN_AS_SUDO = "sudo"
+    public static final String RUN_AS_APP = "sudo"
+
 }

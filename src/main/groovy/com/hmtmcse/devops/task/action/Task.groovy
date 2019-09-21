@@ -9,6 +9,6 @@ class Task {
     public String name
     public List<Action> actions
     public Map<String, String> inheritTask = [:]
-    public Map<String, String> variables = [:]
+    public Map<String, Object> variables = [:]
     public TaskListener taskListener = null
 }

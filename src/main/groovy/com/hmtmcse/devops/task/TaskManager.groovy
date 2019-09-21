@@ -9,9 +9,14 @@ class TaskManager {
 
     public Boolean executeFromJSONFile(String location){}
 
+    public Boolean executeFromJSONFile(String location, String variableLoc){}
+
     public Boolean executeFromYML(String yml){}
 
     public Boolean executeFromYMLFile(String location){}
+
+    public Boolean executeFromYMLFile(String location, String variableLoc){}
+
 
     public StepBin getReport(){}
 

@@ -1,0 +1,53 @@
+=== Input
+
+YAML ::
+. YAML text
+. YAML text with YAML text variables
+. YAML file
+. YAML file with YAML file variables 
+. YAML file with YAML text variables 
+
+JSON ::
+. JSON text
+. JSON text with JSON text variables
+. JSON file
+. JSON file with JSON file variables 
+. JSON file with JSON text variables
+
+As Library ::
+ . YAML file / text 
+ . YAML file / text with Map Variables
+ . JSON file / text 
+ . JSON file / text with Map Variables
+
+
+{blank} +
+
+=== Report
+
+As Libray ::
+. StepBin
+. JSON
+. YAML
+
+From Shell ::
+. Auto Generate Report as table according to configuration.
+
+
+=== Action Processing
+
+. Take input and process as ```Task``` Object. ```InputToTask```
+. Call to ```Executor```
+. *Executor system*
+.. Initiate report
+.. Loop through all actions
+.. Notify listener
+.. Collect each action report
+.. Update global report 
+.. Notify listener
+. *Action Executor*
+.. Find Specific Action
+.. Run Action Executor
+... app
+... sudo
+.. Return the Step Status

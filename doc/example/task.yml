@@ -15,40 +15,40 @@ actions:
     copy:
       source: ''
       destination: ''
-      options:
-        removeDest: false
-        recursive: true
-        copyLink: false
+    options:
+      removeDest: false
+      recursive: true
+      copyLink: false
 
   - name: 'Move Task'
     move:
       source: ''
       destination: ''
-      options:
-        removeDest: false
-        copyLink: false
+    options:
+      removeDest: false
+      copyLink: false
 
   - name: 'Remove Task'
     remove:
       path: ''
-      options:
-        recursive: true
-        force: true
-        removeLink: false
+    options:
+      recursive: true
+      force: true
+      removeLink: false
 
   - name: 'Make Directory'
     makeDir:
       path: ''
-      options:
-        recursive: true
-        removeDest: false
+    options:
+      recursive: true
+      removeDest: false
 
   - name: 'Create Soft Link'
     softLink:
       source: ''
       destination: ''
-      options:
-        removeDest: false
+    options:
+      removeDest: false
 
   - name: 'Archiving Something'
     archive:
@@ -57,9 +57,9 @@ actions:
       variation: ''
       source: ''
       destination: ''
-      options:
-        switch: ''
-        removeDest: false
+    options:
+      switch: ''
+      removeDest: false
 
   - name: 'Run Command in Shell or Bash'
     runCommand:

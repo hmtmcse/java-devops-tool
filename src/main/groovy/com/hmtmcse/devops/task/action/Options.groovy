@@ -6,5 +6,6 @@ class Options {
     public Boolean recursive
     public Boolean copyLink
     public Boolean force
+    public Boolean removeLink
 
 }

@@ -437,23 +437,205 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>DevOps Tool</h1>
 <div class="details">
 <span id="author" class="author">H.M.Touhid Mia</span><br>
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#_input">Input</a></li>
+<li><a href="#_report">Report</a></li>
+<li><a href="#_action_processing">Action Processing</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
 <p><br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_input">Input</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">YAML </dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>YAML text</p>
+</li>
+<li>
+<p>YAML text with YAML text variables</p>
+</li>
+<li>
+<p>YAML file</p>
+</li>
+<li>
+<p>YAML file with YAML file variables</p>
+</li>
+<li>
+<p>YAML file with YAML text variables</p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1">JSON </dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>JSON text</p>
+</li>
+<li>
+<p>JSON text with JSON text variables</p>
+</li>
+<li>
+<p>JSON file</p>
+</li>
+<li>
+<p>JSON file with JSON file variables</p>
+</li>
+<li>
+<p>JSON file with JSON text variables</p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1">As Library </dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>YAML file / text</p>
+</li>
+<li>
+<p>YAML file / text with Map Variables</p>
+</li>
+<li>
+<p>JSON file / text</p>
+</li>
+<li>
+<p>JSON file / text with Map Variables</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_report">Report</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">As Libray </dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>StepBin</p>
+</li>
+<li>
+<p>JSON</p>
+</li>
+<li>
+<p>YAML</p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1">From Shell </dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Auto Generate Report as table according to configuration.</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_action_processing">Action Processing</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Take input and process as <code><code>Task</code></code> Object. <code><code>InputToTask</code></code></p>
+</li>
+<li>
+<p>Call to <code><code>Executor</code></code></p>
+</li>
+<li>
+<p><strong>Executor system</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Initiate report</p>
+</li>
+<li>
+<p>Loop through all actions</p>
+</li>
+<li>
+<p>Notify listener</p>
+</li>
+<li>
+<p>Collect each action report</p>
+</li>
+<li>
+<p>Update global report</p>
+</li>
+<li>
+<p>Notify listener</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Action Executor</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Find Specific Action</p>
+</li>
+<li>
+<p>Run Action Executor</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>app</p>
+</li>
+<li>
+<p>sudo</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Return the Step Status</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-09-15 20:36:40 +0600
+Last updated 2019-09-22 13:07:42 +0600
 </div>
 </div>
 </body>

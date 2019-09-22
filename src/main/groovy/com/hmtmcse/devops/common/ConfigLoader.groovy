@@ -3,6 +3,7 @@ package com.hmtmcse.devops.common
 import com.hmtmcse.common.CommonConst
 import com.hmtmcse.jtfutil.io.FDHelper
 import com.hmtmcse.jtfutil.parser.YmlReader
+import com.hmtmcse.shellutil.print.ConsolePrinter
 
 class ConfigLoader {
 
@@ -10,25 +11,21 @@ class ConfigLoader {
 
     public static Config getConfig() {
         String path = CONFIG_FILE
+        String pathUnderModuleDir = CommonConst.ALL_MODULE_DIRECTORY + "/" + CONFIG_FILE
         Config config = new Config()
         try {
             if (FDHelper.instance().isExist(path)) {
                 path = FDHelper.instance().getFile(path).getAbsolutePath()
-            } else {
-                path = CommonConst.ALL_MODULE_DIRECTORY + "/" + CONFIG_FILE
+            } else  if (FDHelper.instance().isExist(pathUnderModuleDir)) {
+                path = FDHelper.instance().getFile(pathUnderModuleDir).getAbsolutePath()
+            }else{
+                path = null
             }
-        } catch (Exception e) {
-            return config
-        }
-
-        if (path) {
-            try {
+            if (path) {
                 YmlReader ymlReader = new YmlReader()
                 config = ymlReader.ymlAsKlass(path, Config.class)
-            } catch (Exception e) {
-                return config
             }
-        }
+        } catch (Exception e) {}
         return config
     }
 

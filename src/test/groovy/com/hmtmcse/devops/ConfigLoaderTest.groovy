@@ -9,6 +9,7 @@ class ConfigLoaderTest extends Specification {
 
     String invalidConfigFile = CommonConst.TEST_CONTENT_DIRECTORY + "/" + "yml-file.yml"
     String emptyConfigFile = CommonConst.TEST_CONTENT_DIRECTORY + "/" + "empty-file.yml"
+    String validConfigFile = CommonConst.TEST_CONTENT_DIRECTORY + "/" + "config.yml"
 
     def "Invalid Config File Test"(){
 
@@ -31,6 +32,7 @@ class ConfigLoaderTest extends Specification {
 
     def "Valid Config Test"(){
         when: "Load Config"
+        ConfigLoader.CONFIG_FILE = validConfigFile
         Config config = ConfigLoader.getConfig()
 
         then: "Debug Test will true"

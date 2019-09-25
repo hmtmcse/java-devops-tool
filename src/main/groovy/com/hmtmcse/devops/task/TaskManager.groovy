@@ -1,24 +1,49 @@
 package com.hmtmcse.devops.task
 
-import com.hmtmcse.devops.report.StepBin
+import com.hmtmcse.devops.common.Config
+import com.hmtmcse.devops.task.action.Task
+import com.hmtmcse.devops.task.executor.Executor
+import com.hmtmcse.devops.task.processor.InputToTask
 
 class TaskManager {
 
+    private InputToTask inputToTask
+    private Executor executor
 
-    public Boolean executeFromJSON(String json){}
-
-    public Boolean executeFromJSONFile(String location){}
-
-    public Boolean executeFromJSONFile(String location, String variableLoc){}
-
-    public Boolean executeFromYML(String yml){}
-
-    public Boolean executeFromYMLFile(String location){}
-
-    public Boolean executeFromYMLFile(String location, String variableLoc){}
+    public TaskManager(){
+        this.inputToTask = new InputToTask()
+        this.executor = new Executor()
+    }
 
 
-    public StepBin getReport(){}
+    public Boolean execute(String type, String location, Map<String, String> variables = null, Config config = null){
+        Task task = inputToTask.loadTask(type, location, variables, config)
+        return executor.executeTask(task)
+    }
+
+
+    public Boolean executeF(String type, String location, String variables = null, Config config = null){
+        Task task = inputToTask.loadTaskF(type, location, variables, config)
+        return executor.executeTask(task)
+    }
+
+
+
+    public Boolean executeFromJSON(String location){
+        return executeF(InputToTask.JSON, location)
+    }
+
+    public Boolean executeFromJSON(String location, String variableLoc){
+        return executeF(InputToTask.JSON, location, variableLoc)
+    }
+
+    public Boolean executeFromYML(String location){
+        return executeF(InputToTask.YML, location)
+    }
+
+    public Boolean executeFromYML(String location, String variableLoc){
+        return executeF(InputToTask.YML, location, variableLoc)
+    }
 
 
 }

@@ -5,11 +5,11 @@ import com.hmtmcse.devops.task.action.Action
 import com.hmtmcse.devops.task.action.Task
 import com.hmtmcse.devops.task.model.TaskExecutor
 
-class MySQLExecutor implements TaskExecutor<MySQLExecutor>, ExecutorCommonTask {
+class FindReplaceExecutor implements TaskExecutor<FindReplaceExecutor>, ExecutorCommonTask {
 
     @Override
-    MySQLExecutor task(Task task) {
-        return null
+    FindReplaceExecutor task(Task task) {
+
     }
 
     @Override

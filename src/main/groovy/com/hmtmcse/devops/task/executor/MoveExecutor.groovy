@@ -2,9 +2,15 @@ package com.hmtmcse.devops.task.executor
 
 import com.hmtmcse.devops.report.Step
 import com.hmtmcse.devops.task.action.Action
+import com.hmtmcse.devops.task.action.Task
 import com.hmtmcse.devops.task.model.TaskExecutor
 
-class MoveExecutor implements TaskExecutor, ExecutorCommonTask {
+class MoveExecutor implements TaskExecutor<MoveExecutor>, ExecutorCommonTask {
+
+    @Override
+    MoveExecutor task(Task task) {
+
+    }
 
     @Override
     Step execute(Action action) {

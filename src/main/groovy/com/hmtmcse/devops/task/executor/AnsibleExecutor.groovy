@@ -2,9 +2,15 @@ package com.hmtmcse.devops.task.executor
 
 import com.hmtmcse.devops.report.Step
 import com.hmtmcse.devops.task.action.Action
+import com.hmtmcse.devops.task.action.Task
 import com.hmtmcse.devops.task.model.TaskExecutor
 
-class AnsibleExecutor implements TaskExecutor, ExecutorCommonTask {
+class AnsibleExecutor implements TaskExecutor<AnsibleExecutor>, ExecutorCommonTask {
+
+    @Override
+    AnsibleExecutor task(Task task) {
+
+    }
 
     @Override
     Step execute(Action action) {
@@ -20,5 +26,6 @@ class AnsibleExecutor implements TaskExecutor, ExecutorCommonTask {
     Step sudoExecute(Action action) {
         return null
     }
+
 
 }

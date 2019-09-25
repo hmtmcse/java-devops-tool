@@ -4,7 +4,6 @@ import com.hmtmcse.devops.common.Config
 import com.hmtmcse.devops.task.model.TaskListener
 
 class Task {
-
     public Config config
     public String name
     public List<Action> actions

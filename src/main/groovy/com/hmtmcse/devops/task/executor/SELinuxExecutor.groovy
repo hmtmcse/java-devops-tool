@@ -2,9 +2,15 @@ package com.hmtmcse.devops.task.executor
 
 import com.hmtmcse.devops.report.Step
 import com.hmtmcse.devops.task.action.Action
+import com.hmtmcse.devops.task.action.Task
 import com.hmtmcse.devops.task.model.TaskExecutor
 
-class SELinuxExecutor implements TaskExecutor, ExecutorCommonTask {
+class SELinuxExecutor implements TaskExecutor<SELinuxExecutor>, ExecutorCommonTask {
+
+    @Override
+    SELinuxExecutor task(Task task) {
+        return null
+    }
 
     @Override
     Step execute(Action action) {

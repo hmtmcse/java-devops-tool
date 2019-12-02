@@ -12,8 +12,19 @@ repositories {
     mavenCentral()
 }
 
+
+
+def dependencyList = [
+        "java-shell-util",
+        "java-text-and-file-util"
+]
+
+
 dependencies {
-    compile project(':java-text-and-file-util')
-    compile project(':java-shell-util')
+    dependencyList.each {
+        if (findProject(":" + it)){
+            compile project(":" + it)
+        }
+    }
     compile 'org.codehaus.groovy:groovy-all:2.5.8'
 }

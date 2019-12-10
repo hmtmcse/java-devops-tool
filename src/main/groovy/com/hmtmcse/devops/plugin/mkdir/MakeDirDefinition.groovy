@@ -7,6 +7,8 @@ import com.hmtmcse.devops.system.skeleton.TaskInput
 
 class MakeDirDefinition implements PluginDefinition {
 
+    public static final String action = "";
+
     @Override
     TaskReport executeTask(TaskInput taskInput) {
         return null
@@ -24,6 +26,10 @@ class MakeDirDefinition implements PluginDefinition {
 
     @Override
     TaskInput dataFullExample() {
+        MakeDirInput input = new MakeDirInput()
+        input.action = action
+        input.operation = "Example Make Directory Operation."
+        input.input = new MakeDir().setPath("/this/is/path").setDefaultOption()
         return null
     }
 }

@@ -3,11 +3,11 @@ package com.hmtmcse.devops.plugin.mkdir
 import com.hmtmcse.devops.system.skeleton.TaskInput
 
 
-class MakeDirInput implements TaskInput<MakeDirInput> {
+class MakeDirInput implements TaskInput<MakeDir> {
 
     public String action
     public String operation
-    public MakeDirInput input
+    public MakeDir input
 
     @Override
     String getAction() {
@@ -30,12 +30,12 @@ class MakeDirInput implements TaskInput<MakeDirInput> {
     }
 
     @Override
-    MakeDirInput getInput() {
+    MakeDir getInput() {
         return this.input
     }
 
     @Override
-    void setInput(MakeDirInput input) {
+    void setInput(MakeDir input) {
         this.input = input
     }
 

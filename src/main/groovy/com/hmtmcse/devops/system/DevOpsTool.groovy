@@ -12,7 +12,7 @@ class DevOpsTool implements PluginRegistry {
     }
 
     private initBuiltInPlugin() {
-        addPlugin("makeDir", new MakeDirDefinition())
+        addPlugin(MakeDirDefinition.action, new MakeDirDefinition())
     }
 
     private initPluginJar() {

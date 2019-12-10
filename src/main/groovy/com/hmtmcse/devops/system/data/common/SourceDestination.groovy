@@ -1,4 +1,4 @@
-package com.hmtmcse.devops.task.action.command
+package com.hmtmcse.devops.system.data.common
 
 class SourceDestination {
     public String source

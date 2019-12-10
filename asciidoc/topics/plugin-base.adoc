@@ -12,3 +12,27 @@ Report
 ... key : value
 .. headers
 ... key : value
+
+
+
+
+
+. PluginDefinition
+.. executeTask
+.. consoleMenu
+.. uiMenu
+.. progress
+.. report
+.. dataClass
+.. dataFullExample
+
+. TaskInput
+.. action
+.. operation
+.. input
+
+. PluginRegistry
+.. addPlugin
+
+. DevOpsTool
+

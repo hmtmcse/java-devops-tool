@@ -12,7 +12,27 @@ class Test {
                 "data1" : new Data1("Data 1 Data"),
                 "data2" : new Data2("Data 2 Data"),
         ]
-        println(jacksonYml.klassToString(map))
+
+
+        List actions = []
+        Map task = [
+                "operation" : "Copy to home",
+                "action" : "copy",
+                "input": new Data1("Data 1 Data")
+        ]
+        actions.add(task)
+
+        task = [
+                "operation" : "Copy to temp",
+                "action" : "copy",
+                "input": new Data1("Data 1 Data")
+        ]
+        actions.add(task)
+
+
+
+
+        println(jacksonYml.klassToString(actions))
 
     }
 

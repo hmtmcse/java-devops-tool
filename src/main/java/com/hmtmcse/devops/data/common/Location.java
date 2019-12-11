@@ -1,6 +1,6 @@
 package com.hmtmcse.devops.data.common;
 
-public class Location <T> {
+public class Location {
 
     public String path;
 

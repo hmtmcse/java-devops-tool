@@ -4,9 +4,9 @@ import com.hmtmcse.devops.system.skeleton.TaskInput;
 
 public class RemoveInput implements TaskInput<Remove> {
 
-    public String action;
+    public String action = RemoveDefinition.action;
     public String operation;
-    public Remove input;
+    public Remove input = new Remove();
 
     @Override
     public String getAction() {

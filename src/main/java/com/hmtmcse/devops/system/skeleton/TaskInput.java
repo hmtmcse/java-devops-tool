@@ -1,6 +1,6 @@
 package com.hmtmcse.devops.system.skeleton;
 
-public interface TaskInput  <T> {
+public interface TaskInput<T> {
     public String getAction();
     public void setAction(String action);
     public String getOperation();

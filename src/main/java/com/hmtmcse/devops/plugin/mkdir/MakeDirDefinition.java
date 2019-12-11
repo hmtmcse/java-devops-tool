@@ -5,12 +5,12 @@ import com.hmtmcse.devops.data.TaskReport;
 import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
-public class MakeDirDefinition implements PluginDefinition {
+public class MakeDirDefinition implements PluginDefinition<MakeDir> {
 
     public static final String action = "makeDir";
 
     @Override
-    public TaskReport executeTask(TaskInput taskInput) {
+    public TaskReport executeTask(TaskInput<MakeDir> taskInput) {
         return null;
     }
 
@@ -25,7 +25,7 @@ public class MakeDirDefinition implements PluginDefinition {
     }
 
     @Override
-    public TaskInput dataFullExample() {
+    public TaskInput<MakeDir> dataFullExample() {
         MakeDirInput input = new MakeDirInput();
         input.action = action;
         input.operation = "Example Make Directory Operation.";

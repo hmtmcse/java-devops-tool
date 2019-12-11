@@ -6,13 +6,12 @@ import com.hmtmcse.devops.data.TaskReport;
 import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
-public class RemoveDefinition implements PluginDefinition {
+public class RemoveDefinition implements PluginDefinition<Remove> {
 
     public static final String action = "remove";
 
-
     @Override
-    public TaskReport executeTask(TaskInput taskInput) {
+    public TaskReport executeTask(TaskInput<Remove> taskInput) {
         return null;
     }
 
@@ -22,8 +21,11 @@ public class RemoveDefinition implements PluginDefinition {
     }
 
     @Override
-    public TaskInput dataFullExample() {
-        return new RemoveInput();
+    public TaskInput<Remove> dataFullExample() {
+        RemoveInput removeInput = new RemoveInput();
+        removeInput.operation = "Example of Remove";
+        removeInput.input.path = "/this/is/the/path";
+        return removeInput;
     }
 
     @Override

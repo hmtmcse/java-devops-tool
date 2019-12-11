@@ -2,7 +2,7 @@ package com.hmtmcse.devops.plugin.mkdir;
 
 import com.hmtmcse.devops.data.common.Location;
 
-public class MakeDir extends Location<MakeDir> {
+public class MakeDir extends Location {
 
     public MakeDirOption options = new MakeDirOption();
 

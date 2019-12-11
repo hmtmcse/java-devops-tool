@@ -12,7 +12,7 @@ class BismillahTest extends Specification {
 
     def "Show Descriptor Example"(){
         expect: "The Application Execution will Start"
-        String[] command = ["show", "-help"];
+        String[] command = ["show", "-c", "data"];
         Bismillah.main(command)
     }
 

@@ -11,4 +11,8 @@ trait PluginRegistry {
         return this
     }
 
+    public Map<String, PluginDefinition> getAllPlugins(){
+        return this.plugins
+    }
+
 }

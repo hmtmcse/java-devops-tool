@@ -1,5 +1,6 @@
 package com.hmtmcse.devops.system.service.menu
 
+import com.hmtmcse.devops.system.DevOpsTool
 import com.hmtmcse.shellutil.common.ShellUtilException
 import com.hmtmcse.shellutil.console.menu.CommandAction
 import com.hmtmcse.shellutil.console.menu.CommandProcessor
@@ -30,7 +31,8 @@ class ConsoleMenu {
         OptionDefinition optionDefinition = new OptionDefinition(new CommandAction() {
             @Override
             public void process(OptionValues optionValues) throws ShellUtilException {
-
+                DevOpsTool devOpsTool = new DevOpsTool()
+                devOpsTool.showSample();
             }
         });
         optionDefinition.setCommandDescription("Show Task Description Sample");

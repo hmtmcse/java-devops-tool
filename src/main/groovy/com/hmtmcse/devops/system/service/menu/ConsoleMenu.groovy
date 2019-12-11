@@ -14,7 +14,8 @@ class ConsoleMenu {
         OptionDefinition optionDefinition = new OptionDefinition(new CommandAction() {
             @Override
             public void process(OptionValues optionValues) throws ShellUtilException {
-
+                DevOpsTool devOpsTool = new DevOpsTool()
+                devOpsTool.executeTask("C:\\Users\\touhid\\Desktop\\tmp\\des.yml");
             }
         });
         optionDefinition.setCommandDescription("Start DevOps Tool");

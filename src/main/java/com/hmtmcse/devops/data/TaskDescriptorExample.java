@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TaskDescriptorExample extends TaskDescriptorBase{
+public class TaskDescriptorExample extends TaskDescriptorBase {
 
-    public String taskName;
     public List<TaskInput> actions = new ArrayList<>();
 
 }

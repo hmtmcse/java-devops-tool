@@ -12,12 +12,13 @@ public class RemoveDefinition implements PluginDefinition<Remove> {
 
     @Override
     public TaskReport executeTask(TaskInput<Remove> taskInput) {
+        System.out.println("Yes Buddy: RemoveDefinition");
         return null;
     }
 
     @Override
     public Class<?> dataClass() {
-        return null;
+        return RemoveInput.class;
     }
 
     @Override

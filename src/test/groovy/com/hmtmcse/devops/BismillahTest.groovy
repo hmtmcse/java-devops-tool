@@ -6,7 +6,7 @@ class BismillahTest extends Specification {
 
     def "Start the DevOps Tool"(){
         expect: "The Application Execution will Start"
-        String[] command = ["bismillah", "-help"];
+        String[] command = ["bismillah", "-d", "bismillah"];
         Bismillah.main(command)
     }
 

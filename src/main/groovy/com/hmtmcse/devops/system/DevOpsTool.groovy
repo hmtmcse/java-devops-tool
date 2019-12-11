@@ -1,5 +1,6 @@
 package com.hmtmcse.devops.system
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.hmtmcse.devops.data.TaskDescriptorExample
 import com.hmtmcse.devops.plugin.mkdir.MakeDirDefinition
 import com.hmtmcse.devops.plugin.remove.RemoveDefinition
@@ -30,6 +31,8 @@ class DevOpsTool implements PluginRegistry {
     void showSample() {
         TaskDescriptorExample taskDescriptor = new TaskDescriptorExample()
         taskDescriptor.taskName = "Sample Task"
+        taskDescriptor.variables.put("__NAME__", "This is My Name")
+        taskDescriptor.variables.put("__SERVER__", "This is My Server")
         ymlProcessor = new YmlProcessor()
         getAllPlugins().each { String name, PluginDefinition pluginDefinition ->
             if (pluginDefinition.dataFullExample()) {
@@ -37,6 +40,20 @@ class DevOpsTool implements PluginRegistry {
             }
         }
         println(ymlProcessor.objectToYmlString(taskDescriptor))
+    }
+
+    void executeTask(String location, Map<String, String> keywords = [:]) {
+        TaskDescriptor taskDescriptor = ymlProcessor.ymlFileToObject(location, keywords)
+        if (taskDescriptor.actions) {
+            ObjectMapper objectMapper = new ObjectMapper()
+            PluginDefinition pluginDefinition
+            taskDescriptor.actions.each { Map map ->
+                if (map && map.action && getAllPlugins().get(map.action)){
+                    pluginDefinition = getAllPlugins().get(map.action)
+                    pluginDefinition.executeTask(objectMapper.convertValue(map, pluginDefinition.dataClass()))
+                }
+            }
+        }
     }
 
 }

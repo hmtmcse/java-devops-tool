@@ -1,12 +1,12 @@
-package __PACKAGE__;
+package com.hmtmcse.devops.plugin.archive;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
-public class __NAME__Input implements TaskInput<__NAME__> {
+public class ArchiveInput implements TaskInput<Archive> {
 
     public String action;
     public String operation;
-    public __NAME__ input = new __NAME__();
+    public Archive input = new Archive();
 
     @Override
     public String getAction() {
@@ -29,12 +29,12 @@ public class __NAME__Input implements TaskInput<__NAME__> {
     }
 
     @Override
-    public __NAME__ getInput() {
+    public Archive getInput() {
         return input;
     }
 
     @Override
-    public void setInput(__NAME__ input) {
+    public void setInput(Archive input) {
         this.input = input;
     }
 }

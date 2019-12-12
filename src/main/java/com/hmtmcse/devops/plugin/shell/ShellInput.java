@@ -1,12 +1,12 @@
-package __PACKAGE__;
+package com.hmtmcse.devops.plugin.shell;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
-public class __NAME__Input implements TaskInput<__NAME__> {
+public class ShellInput implements TaskInput<Shell> {
 
     public String action;
     public String operation;
-    public __NAME__ input = new __NAME__();
+    public Shell input = new Shell();
 
     @Override
     public String getAction() {
@@ -29,12 +29,12 @@ public class __NAME__Input implements TaskInput<__NAME__> {
     }
 
     @Override
-    public __NAME__ getInput() {
+    public Shell getInput() {
         return input;
     }
 
     @Override
-    public void setInput(__NAME__ input) {
+    public void setInput(Shell input) {
         this.input = input;
     }
 }

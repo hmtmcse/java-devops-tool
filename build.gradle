@@ -28,3 +28,51 @@ dependencies {
     }
     compile 'org.codehaus.groovy:groovy-all:2.5.8'
 }
+
+
+String packageName = "com.hmtmcse.devops.plugin.archive"
+String name = "Archive"
+String registrationName = "archive"
+String projectSource = "${project.rootDir}/all-plugins/java-devops-tool"
+String javaSrc = "${projectSource}/src/main/java"
+
+task createPlugin {
+    doLast {
+        String packageToPath = packageName.replaceAll("\\.", "/")
+        String packagePath = "${javaSrc}/${packageToPath}"
+        println(packagePath)
+        if (file(packagePath).exists()){
+            println("================ PACKAGE ALREADY EXIST !!! ================")
+            return
+        }
+
+        Map<String, String> map = [
+                __NAME__ : name,
+                __PACKAGE__ : packageName,
+                __REGISTRATION_NAME__ : registrationName,
+        ]
+
+        String content
+        mkdir(packagePath)
+        [
+                "APluginOption.java" : "${name}Option.java",
+                "BPlugin.java" : "${name}.java",
+                "CPluginInput.java" : "${name}Input.java",
+                "DPluginDescriptor.java" : "${name}Descriptor.java"
+        ].each { String source, String dst ->
+            content = file("${projectSource}/asciidoc/sample/${source}").text
+            content = findReplaceData(content, map)
+            new File(packagePath, dst).text = content
+        }
+    }
+}
+
+private String findReplaceData(String content, Map<String, String> map = [:]){
+    map.each { String key, String value ->
+        content = content.replaceAll(key, value)
+    }
+    return content
+}
+
+
+

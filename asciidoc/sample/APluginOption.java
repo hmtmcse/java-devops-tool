@@ -1,4 +1,5 @@
-package com.hmtmcse.devops.plugin.plugin;
+package __PACKAGE__;
 
-public class APluginOption {
+public class __NAME__Option {
+    public String example;
 }

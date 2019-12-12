@@ -7,7 +7,7 @@ import com.hmtmcse.devops.system.skeleton.TaskInput;
 
 public class FindReplaceDescriptor implements PluginDefinition<FindReplace> {
 
-    public static final String action = "fiendReplace";
+    public static final String action = "findReplace";
 
     @Override
     public TaskReport executeTask(TaskInput<FindReplace> taskInput) {
@@ -27,6 +27,9 @@ public class FindReplaceDescriptor implements PluginDefinition<FindReplace> {
 
     @Override
     public TaskInput<FindReplace> dataFullExample() {
-        return new FindReplaceInput();
+        FindReplaceInput input = new FindReplaceInput();
+        input.action = FindReplaceDescriptor.action;
+        input.operation = "Example of FindReplace Plugin.";
+        return input;
     }
 }

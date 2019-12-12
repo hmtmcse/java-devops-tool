@@ -30,9 +30,9 @@ dependencies {
 }
 
 
-String packageName = "com.hmtmcse.devops.plugin.archive"
-String name = "Archive"
-String registrationName = "archive"
+String packageName = "com.hmtmcse.devops.plugin.softlink"
+String name = "SoftLink"
+String registrationName = "softLink"
 String projectSource = "${project.rootDir}/all-plugins/java-devops-tool"
 String javaSrc = "${projectSource}/src/main/java"
 

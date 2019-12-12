@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.hmtmcse.devops.data.TaskDescriptorExample
 import com.hmtmcse.devops.plugin.archive.ArchiveDescriptor
 import com.hmtmcse.devops.plugin.copy.CopyDescriptor
+import com.hmtmcse.devops.plugin.findreplace.FindReplaceDescriptor
 import com.hmtmcse.devops.plugin.mkdir.MakeDirDefinition
 import com.hmtmcse.devops.plugin.move.MoveDescriptor
 import com.hmtmcse.devops.plugin.remove.RemoveDefinition
@@ -32,6 +33,7 @@ class DevOpsTool implements PluginRegistry {
         addPlugin(ArchiveDescriptor.action, new ArchiveDescriptor())
         addPlugin(ShellDescriptor.action, new ShellDescriptor())
         addPlugin(SoftLinkDescriptor.action, new SoftLinkDescriptor())
+        addPlugin(FindReplaceDescriptor.action, new FindReplaceDescriptor())
     }
 
     private initPluginJar() {

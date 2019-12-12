@@ -7,7 +7,7 @@ import com.hmtmcse.devops.system.skeleton.TaskInput;
 
 public class SoftLinkDescriptor implements PluginDefinition<SoftLink> {
 
-    public static final String action = "softlink";
+    public static final String action = "softLink";
 
     @Override
     public TaskReport executeTask(TaskInput<SoftLink> taskInput) {

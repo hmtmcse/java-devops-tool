@@ -6,7 +6,7 @@ public class FindReplaceInput implements TaskInput<FindReplace> {
 
     public String action;
     public String operation;
-    public FindReplace input;
+    public FindReplace input = new FindReplace();
 
     @Override
     public String getAction() {

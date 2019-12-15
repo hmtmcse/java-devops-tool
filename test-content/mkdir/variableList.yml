@@ -1,4 +1,6 @@
 variableList:
   - __NAME__: "dir1"
+    __DATA__: 'data'
+
   - __NAME__: "dir2"
   - __NAME__: "dir3"

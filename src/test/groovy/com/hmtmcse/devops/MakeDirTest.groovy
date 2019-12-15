@@ -27,5 +27,27 @@ class MakeDirTest extends Specification {
         Bismillah.main(command)
     }
 
+    def "No Option specified"() {
+        expect: "No Option"
+        String[] command = ["bismillah", "-d", "${path}/test-with-no-option.yml"];
+        Bismillah.main(command)
+    }
 
+    def "No Path specified"() {
+        expect: "No Path"
+        String[] command = ["bismillah", "-d", "${path}/test-with-no-path.yml"];
+        Bismillah.main(command)
+    }
+
+    def "No Recursive Path specified"() {
+        expect: "No Path"
+        String[] command = ["bismillah", "-d", "${path}/no-recursive.yml"];
+        Bismillah.main(command)
+    }
+
+    def "Recursive Path specified"() {
+        expect: "Recursive Path"
+        String[] command = ["bismillah", "-d", "${path}/recursive-path.yml"];
+        Bismillah.main(command)
+    }
 }

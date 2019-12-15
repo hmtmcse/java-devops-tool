@@ -1,0 +1,8 @@
+taskName: "Create Directory Test"
+actions:
+  - action: "makeDir"
+    operation: "Recursive Path Directory"
+    input:
+      path: "tmp/recursive/path/specified/yes"
+      options:
+        recursive: true

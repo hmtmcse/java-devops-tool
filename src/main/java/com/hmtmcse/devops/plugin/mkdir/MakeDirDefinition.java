@@ -5,6 +5,8 @@ import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 import com.hmtmcse.devops.system.skeleton.TaskProgress;
 import com.hmtmcse.devops.system.common.DevOpsException;
+import com.hmtmcse.fileutil.common.FileUtilException;
+import com.hmtmcse.fileutil.fd.FileDirectory;
 
 public class MakeDirDefinition implements PluginDefinition<MakeDir> {
 
@@ -12,8 +14,35 @@ public class MakeDirDefinition implements PluginDefinition<MakeDir> {
 
     @Override
     public TaskReport executeTask(TaskInput<MakeDir> taskInput, TaskProgress taskProgress) throws DevOpsException {
-        taskProgress.errorThrowException("Not working");
-        return null;
+
+        TaskReport taskReport = new TaskReport();
+        try {
+            FileDirectory fileDirectory = new FileDirectory();
+            String path = taskInput.getInput().path;
+            if (path == null || path.equals("")) {
+                taskReport.failed(taskInput.getAction(), taskInput.getOperation(), "Empty Path");
+                return taskReport;
+            }
+
+            if (taskInput.getInput().options.removeDest && fileDirectory.isExist(path)) {
+                fileDirectory.removeAll(path);
+                taskReport.nested().success("delete", "Delete Destination");
+            }
+
+            if (taskInput.getInput().options.recursive) {
+                fileDirectory.createDirectories(taskInput.getInput().path);
+            } else {
+                fileDirectory.createDirectory(taskInput.getInput().path);
+            }
+
+            taskReport.success(taskInput.getAction(), taskInput.getOperation());
+        } catch (FileUtilException e) {
+            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), e.getMessage());
+            if (taskInput.getInput().options.isExitOnFailed) {
+                taskProgress.errorThrowException(e.getMessage(), taskReport);
+            }
+        }
+        return taskReport;
     }
 
     @Override

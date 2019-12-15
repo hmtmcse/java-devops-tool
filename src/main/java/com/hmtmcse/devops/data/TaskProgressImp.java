@@ -12,8 +12,17 @@ public class TaskProgressImp implements TaskProgress {
 
     @Override
     public void errorThrowException(String message) throws DevOpsException {
-
         throw new DevOpsException(message);
+    }
+
+    @Override
+    public void messageThrowException(String message, TaskReport taskReport) throws DevOpsException {
+        throw new DevOpsException(message).setTaskReport(taskReport);
+    }
+
+    @Override
+    public void errorThrowException(String message, TaskReport taskReport) throws DevOpsException {
+        throw new DevOpsException(message).setTaskReport(taskReport);
     }
 
     @Override

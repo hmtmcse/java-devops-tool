@@ -1,0 +1,10 @@
+taskName: "Create Directory Test"
+actions:
+  - action: "makeDir"
+    operation: "Create Directory"
+    input:
+      path: "tmp/bismillah"
+      options:
+        isExitOnFailed: false
+        recursive: true
+        removeDest: true

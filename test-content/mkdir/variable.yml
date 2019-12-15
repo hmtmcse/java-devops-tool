@@ -1,0 +1,13 @@
+taskName: "Sample Task"
+variables:
+  __NAME__: "This is My Name"
+  __SERVER__: "This is My Server"
+actions:
+  - action: "makeDir"
+    operation: "Example Make Directory Operation."
+    input:
+      path: "/this/is/path"
+      options:
+        isExitOnFailed: false
+        recursive: true
+        removeDest: false

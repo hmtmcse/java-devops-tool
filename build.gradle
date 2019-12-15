@@ -4,13 +4,28 @@ apply plugin : 'java'
 apply plugin : 'groovy'
 
 group 'com.hmtmcse'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
+
+jar{
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    archivesBaseName = 'devOpsTool'
+    manifest {
+        attributes (
+                'Implementation-Title': 'DevOps Tool',
+                'Implementation-Version': archiveVersion,
+                'Main-Class': 'com.hmtmcse.devops.Bismillah'
+        )
+    }
+}
+
 
 
 

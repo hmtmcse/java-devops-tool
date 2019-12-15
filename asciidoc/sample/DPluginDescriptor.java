@@ -1,9 +1,10 @@
 package __PACKAGE__;
 
-import com.hmtmcse.devops.data.TaskProgress;
 import com.hmtmcse.devops.data.TaskReport;
 import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
+import com.hmtmcse.devops.system.skeleton.TaskProgress;
+import com.hmtmcse.devops.system.common.DevOpsException;
 
 public class __NAME__Descriptor implements PluginDefinition<__NAME__> {
 
@@ -16,8 +17,9 @@ public class __NAME__Descriptor implements PluginDefinition<__NAME__> {
     }
 
     @Override
-    public void progress(TaskProgress taskProgress) {
-        System.out.println("Yes Buddy: __NAME__Descriptor progress");
+    public TaskReport executeTask(TaskInput<MakeDir> taskInput, TaskProgress taskProgress) throws DevOpsException {
+        System.out.println("Yes Buddy: __NAME__Descriptor");
+        return null;
     }
 
     @Override

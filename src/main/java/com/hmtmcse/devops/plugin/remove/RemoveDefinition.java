@@ -1,17 +1,19 @@
 package com.hmtmcse.devops.plugin.remove;
 
 
-import com.hmtmcse.devops.data.TaskProgress;
 import com.hmtmcse.devops.data.TaskReport;
+import com.hmtmcse.devops.system.common.DevOpsException;
 import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
+import com.hmtmcse.devops.system.skeleton.TaskProgress;
 
 public class RemoveDefinition implements PluginDefinition<Remove> {
 
     public static final String action = "remove";
 
+
     @Override
-    public TaskReport executeTask(TaskInput<Remove> taskInput) {
+    public TaskReport executeTask(TaskInput<Remove> taskInput, TaskProgress taskProgress) throws DevOpsException {
         System.out.println("Yes Buddy: RemoveDefinition");
         return null;
     }
@@ -29,8 +31,4 @@ public class RemoveDefinition implements PluginDefinition<Remove> {
         return removeInput;
     }
 
-    @Override
-    public void progress(TaskProgress taskProgress) {
-
-    }
 }

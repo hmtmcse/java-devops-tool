@@ -16,7 +16,8 @@ repositories {
 
 def dependencyList = [
         "java-shell-util",
-        "java-text-and-file-util"
+        "java-text-and-file-util",
+        "java-file-util"
 ]
 
 

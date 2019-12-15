@@ -2,15 +2,17 @@ package com.hmtmcse.devops.system
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.hmtmcse.devops.data.TaskDescriptorExample
+import com.hmtmcse.devops.data.TaskProgressImp
 import com.hmtmcse.devops.plugin.archive.ArchiveDescriptor
 import com.hmtmcse.devops.plugin.copy.CopyDescriptor
 import com.hmtmcse.devops.plugin.findreplace.FindReplaceDescriptor
 import com.hmtmcse.devops.plugin.mkdir.MakeDirDefinition
+import com.hmtmcse.devops.data.TaskDescriptor
 import com.hmtmcse.devops.plugin.move.MoveDescriptor
 import com.hmtmcse.devops.plugin.remove.RemoveDefinition
-import com.hmtmcse.devops.data.TaskDescriptor
 import com.hmtmcse.devops.plugin.shell.ShellDescriptor
 import com.hmtmcse.devops.plugin.softlink.SoftLinkDescriptor
+import com.hmtmcse.devops.system.common.DevOpsException
 import com.hmtmcse.devops.system.plugin.PluginRegistry
 import com.hmtmcse.devops.system.processor.YmlProcessor
 import com.hmtmcse.devops.system.skeleton.PluginDefinition
@@ -59,13 +61,21 @@ class DevOpsTool implements PluginRegistry {
         if (taskDescriptor.actions) {
             ObjectMapper objectMapper = new ObjectMapper()
             PluginDefinition pluginDefinition
-            taskDescriptor.actions.each { Map map ->
-                if (map && map.action && getAllPlugins().get(map.action)){
-                    pluginDefinition = getAllPlugins().get(map.action)
-                    pluginDefinition.executeTask(objectMapper.convertValue(map, pluginDefinition.dataClass()))
+            try{
+                taskDescriptor.actions.each { Map map ->
+                    if (map && map.action && getAllPlugins().get(map.action)){
+                        pluginDefinition = getAllPlugins().get(map.action)
+                        pluginDefinition.executeTask(objectMapper.convertValue(map, pluginDefinition.dataClass()), logPrinter())
+                    }
                 }
+            }catch(DevOpsException exception){
+                println(exception.getMessage())
             }
         }
+    }
+
+    TaskProgressImp logPrinter() {
+        return new TaskProgressImp()
     }
 
 }

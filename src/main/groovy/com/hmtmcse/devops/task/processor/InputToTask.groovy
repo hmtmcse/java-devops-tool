@@ -2,7 +2,7 @@ package com.hmtmcse.devops.task.processor
 
 import com.hmtmcse.devops.common.Config
 import com.hmtmcse.devops.common.ConfigLoader
-import com.hmtmcse.devops.common.DevOpsException
+import com.hmtmcse.devops.system.common.DevOpsException
 import com.hmtmcse.devops.task.action.Task
 import com.hmtmcse.jtfutil.TextFileException
 import com.hmtmcse.jtfutil.io.FDHelper

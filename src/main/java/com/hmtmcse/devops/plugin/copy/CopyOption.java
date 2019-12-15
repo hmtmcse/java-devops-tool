@@ -1,5 +1,7 @@
 package com.hmtmcse.devops.plugin.copy;
 
 public class CopyOption {
-   public String example;
+   public Boolean replaceExisting = true;
+   public Boolean copyAttributes = true;
+   public Boolean noFollowLinks = true;
 }

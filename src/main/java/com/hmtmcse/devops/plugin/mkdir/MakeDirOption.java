@@ -1,6 +1,8 @@
 package com.hmtmcse.devops.plugin.mkdir;
 
-public class MakeDirOption {
+import com.hmtmcse.devops.data.ExitOnFailed;
+
+public class MakeDirOption extends ExitOnFailed {
 
     public Boolean recursive = true;
     public Boolean removeDest = false;

@@ -1,4 +1,4 @@
-package com.hmtmcse.devops.common;
+package com.hmtmcse.devops.system.common;
 
 /**
  * Created by Touhid Mia on 11/09/2014.

@@ -1,23 +1,19 @@
 package com.hmtmcse.devops.plugin.findreplace;
 
-import com.hmtmcse.devops.data.TaskProgress;
 import com.hmtmcse.devops.data.TaskReport;
+import com.hmtmcse.devops.system.common.DevOpsException;
 import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
+import com.hmtmcse.devops.system.skeleton.TaskProgress;
 
 public class FindReplaceDescriptor implements PluginDefinition<FindReplace> {
 
     public static final String action = "findReplace";
 
     @Override
-    public TaskReport executeTask(TaskInput<FindReplace> taskInput) {
+    public TaskReport executeTask(TaskInput<FindReplace> taskInput, TaskProgress taskProgress) throws DevOpsException {
         System.out.println("Yes Buddy: FindReplaceDescriptor");
         return null;
-    }
-
-    @Override
-    public void progress(TaskProgress taskProgress) {
-        System.out.println("Yes Buddy: FindReplaceDescriptor progress");
     }
 
     @Override

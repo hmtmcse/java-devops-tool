@@ -15,16 +15,16 @@ class ConsoleMenu {
             @Override
             public void process(OptionValues optionValues) throws ShellUtilException {
                 DevOpsTool devOpsTool = new DevOpsTool()
-                devOpsTool.executeTask(optionValues.valueAsString("descriptor"));
+                devOpsTool.executeTask(optionValues.valueAsString("descriptor"), optionValues.valueAsString("variable"));
             }
         });
         optionDefinition.setCommandDescription("Start DevOps Tool");
-
         optionDefinition.addOption("descriptor", "d").required();
         optionDefinition.required().setDescription("Please specify the descriptor YAML file location.");
 
-        optionDefinition.addOption("variables", "v");
-        optionDefinition.setDescription("Name of the Instance.")
+        optionDefinition.addOption("variable", "v")
+        optionDefinition.setDescription("Please specify the variable YAML file location.");
+
         return optionDefinition;
     }
 

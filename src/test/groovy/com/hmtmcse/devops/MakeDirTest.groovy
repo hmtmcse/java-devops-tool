@@ -15,5 +15,17 @@ class MakeDirTest extends Specification {
         Bismillah.main(command)
     }
 
+    def "Create Directory with variable path test"() {
+        expect: "Create Directory with variable path"
+        String[] command = ["bismillah", "-d", "${path}/variableTask.yml", "-v", "${path}/variable.yml"];
+        Bismillah.main(command)
+    }
+
+    def "Create Directory with variable list path test"() {
+        expect: "Create Directory with variable list path"
+        String[] command = ["bismillah", "-d", "${path}/variableTask.yml", "-v", "${path}/variableList.yml"];
+        Bismillah.main(command)
+    }
+
 
 }

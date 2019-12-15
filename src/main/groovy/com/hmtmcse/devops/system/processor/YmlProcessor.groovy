@@ -1,6 +1,7 @@
 package com.hmtmcse.devops.system.processor
 
 import com.hmtmcse.devops.data.TaskDescriptor
+import com.hmtmcse.devops.data.TaskVariable
 import com.hmtmcse.jtfutil.parser.JacksonYml
 import com.hmtmcse.jtfutil.parser.YmlReader
 import com.hmtmcse.jtfutil.text.ReadWriteTextFile
@@ -12,6 +13,11 @@ class YmlProcessor {
     public String objectToYmlString(Object object){
         JacksonYml jacksonYml = new JacksonYml()
         return jacksonYml.klassToString(object);
+    }
+
+    public TaskVariable ymlFileToVariable(String location) {
+        JacksonYml jacksonYml = new JacksonYml()
+        return jacksonYml.ymlAsNestedKlass(location, TaskVariable.class)
     }
 
     public String findReplaceKeyword(String location, Map<String, String> keywords = [:]) {

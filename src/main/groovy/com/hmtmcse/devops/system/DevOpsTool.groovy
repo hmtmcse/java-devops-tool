@@ -8,6 +8,7 @@ import com.hmtmcse.devops.data.Status
 import com.hmtmcse.devops.data.TaskDescriptorExample
 import com.hmtmcse.devops.data.TaskProgressImp
 import com.hmtmcse.devops.data.TaskReport
+import com.hmtmcse.devops.data.TaskVariable
 import com.hmtmcse.devops.plugin.archive.ArchiveDescriptor
 import com.hmtmcse.devops.plugin.copy.CopyDescriptor
 import com.hmtmcse.devops.plugin.findreplace.FindReplaceDescriptor
@@ -50,15 +51,47 @@ class DevOpsTool implements PluginRegistry {
     void showSample() {
         TaskDescriptorExample taskDescriptor = new TaskDescriptorExample()
         taskDescriptor.taskName = "Sample Task"
-        taskDescriptor.variables.put("__NAME__", "This is My Name")
-        taskDescriptor.variables.put("__SERVER__", "This is My Server")
+
         ymlProcessor = new YmlProcessor()
         getAllPlugins().each { String name, PluginDefinition pluginDefinition ->
             if (pluginDefinition.dataFullExample()) {
                 taskDescriptor.actions.add(pluginDefinition.dataFullExample())
             }
         }
+
+        TaskVariable taskVariable = new TaskVariable()
+        LinkedHashMap<String, String> variable = [:]
+        variable.put("__NAME__", "This is My Name")
+        variable.put("__SERVER__", "This is My Server")
+        taskVariable.variables = variable;
+        List list = []
+        list.add(variable)
+        taskVariable.variableList = list;
+        println("========= Variable Example =========")
+        println(ymlProcessor.objectToYmlString(taskVariable))
+        println("")
         println(ymlProcessor.objectToYmlString(taskDescriptor))
+    }
+
+    void executeTask(String location, String variableLocation) {
+        if (!variableLocation) {
+            executeTask(location)
+            return
+        }
+        try {
+            TaskVariable taskVariable = ymlProcessor.ymlFileToVariable(variableLocation)
+            if (taskVariable && taskVariable.variables) {
+                executeTask(location, taskVariable.variables)
+            } else if (taskVariable && taskVariable.variableList) {
+                taskVariable.variableList.each {
+                    executeTask(location, it)
+                }
+            } else {
+                executeTask(location)
+            }
+        } catch (Exception e) {
+            executeTask(location)
+        }
     }
 
     void executeTask(String location, Map<String, String> keywords = [:]) {
@@ -68,17 +101,17 @@ class DevOpsTool implements PluginRegistry {
             ObjectMapper objectMapper = new ObjectMapper()
             PluginDefinition pluginDefinition
             TaskReport taskReport
-            try{
+            try {
                 taskDescriptor.actions.each { Map map ->
-                    if (map && map.action && getAllPlugins().get(map.action)){
+                    if (map && map.action && getAllPlugins().get(map.action)) {
                         pluginDefinition = getAllPlugins().get(map.action)
                         taskReport = pluginDefinition.executeTask(objectMapper.convertValue(map, pluginDefinition.dataClass()), logPrinter())
                         reports.add(taskReport)
                     }
                 }
-            }catch(DevOpsException exception){
+            } catch (DevOpsException exception) {
                 println(exception.getMessage())
-                if (exception.taskReport){
+                if (exception.taskReport) {
                     reports.add(exception.taskReport)
                 }
             }
@@ -86,21 +119,21 @@ class DevOpsTool implements PluginRegistry {
         showReport(reports)
     }
 
-    private void tableRowData(Table table, String index, TaskReport tr){
+    private void tableRowData(Table table, String index, TaskReport tr) {
         TableRowData rowData = table.setRowData(index);
         rowData.add(tr.action);
         rowData.add(tr.operation);
-        if (tr.status == Status.SUCCESS){
+        if (tr.status == Status.SUCCESS) {
             rowData.add(tr.status, TableConstant.LEFT_ALIGN, TableConstant.BLUE);
-        }else if (tr.status == Status.PARTIALLY_SUCCESS){
+        } else if (tr.status == Status.PARTIALLY_SUCCESS) {
             rowData.add(tr.status, TableConstant.LEFT_ALIGN, TableConstant.YELLOW);
-        }else{
+        } else {
             rowData.add(tr.status, TableConstant.LEFT_ALIGN, TableConstant.RED);
         }
 
-        if (tr.error){
+        if (tr.error) {
             rowData.add(tr.error, TableConstant.LEFT_ALIGN, TableConstant.RED);
-        }else{
+        } else {
             rowData.add("");
         }
         table.addRow(rowData);
@@ -116,9 +149,9 @@ class DevOpsTool implements PluginRegistry {
         Integer index = 1
         reports.each { TaskReport tr ->
             tableRowData(table, index + "", tr)
-            if (tr.nestedTaskReport){
-                tr.nestedTaskReport.each {TaskReport ntr ->
-                    tableRowData(table,  "", ntr)
+            if (tr.nestedTaskReport) {
+                tr.nestedTaskReport.each { TaskReport ntr ->
+                    tableRowData(table, "", ntr)
                 }
             }
             index++

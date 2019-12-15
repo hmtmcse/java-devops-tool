@@ -1,0 +1,10 @@
+taskName: "Variable Test for Make Directory"
+actions:
+  - action: "makeDir"
+    operation: "Is Variable Replaced into creation?"
+    input:
+      path: "tmp/__NAME__/directory"
+      options:
+        isExitOnFailed: false
+        recursive: true
+        removeDest: false

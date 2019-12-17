@@ -30,6 +30,7 @@ public class RemoveDefinition implements PluginDefinition<Remove> {
             } else {
                 fileDirectory.remove(taskInput.getInput().path);
             }
+
             taskReport.success(taskInput.getAction(), taskInput.getOperation());
         } catch (FileUtilException e) {
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), e.getMessage());

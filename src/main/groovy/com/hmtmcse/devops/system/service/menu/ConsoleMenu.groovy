@@ -16,6 +16,7 @@ class ConsoleMenu {
             public void process(OptionValues optionValues) throws ShellUtilException {
                 DevOpsTool devOpsTool = new DevOpsTool()
                 devOpsTool.executeTask(optionValues.valueAsString("descriptor"), optionValues.valueAsString("variable"));
+                devOpsTool.showReport()
             }
         });
         optionDefinition.setCommandDescription("Start DevOps Tool");

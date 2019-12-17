@@ -1,0 +1,8 @@
+taskName: "Variable Test for Remove Directory"
+actions:
+  - action: "remove"
+    operation: "Is Variable Replaced into creation?"
+    input:
+      path: "tmp/__NAME__"
+      options:
+        recursive: true

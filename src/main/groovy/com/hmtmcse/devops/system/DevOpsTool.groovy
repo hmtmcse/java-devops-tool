@@ -25,12 +25,15 @@ import com.hmtmcse.devops.system.skeleton.PluginDefinition
 
 class DevOpsTool implements PluginRegistry {
 
-    YmlProcessor ymlProcessor
+    private YmlProcessor ymlProcessor
+    private Table table;
+    private Integer index = 1;
 
     public DevOpsTool() {
         initBuiltInPlugin()
         initPluginJar()
         ymlProcessor = new YmlProcessor()
+        reportInit()
     }
 
     private initBuiltInPlugin() {
@@ -105,7 +108,14 @@ class DevOpsTool implements PluginRegistry {
                 taskDescriptor.actions.each { Map map ->
                     if (map && map.action && getAllPlugins().get(map.action)) {
                         pluginDefinition = getAllPlugins().get(map.action)
-                        taskReport = pluginDefinition.executeTask(objectMapper.convertValue(map, pluginDefinition.dataClass()), logPrinter())
+                        try {
+                            taskReport = pluginDefinition.executeTask(objectMapper.convertValue(map, pluginDefinition.dataClass()), logPrinter())
+                        } catch (DevOpsException exception) {
+                            if (exception.taskReport) {
+                                reports.add(exception.taskReport)
+                            }
+                            return
+                        }
                         reports.add(taskReport)
                     }
                 }
@@ -116,7 +126,7 @@ class DevOpsTool implements PluginRegistry {
                 }
             }
         }
-        showReport(reports)
+        addToReport(reports)
     }
 
     private void tableRowData(Table table, String index, TaskReport tr) {
@@ -139,14 +149,20 @@ class DevOpsTool implements PluginRegistry {
         table.addRow(rowData);
     }
 
-    void showReport(List<TaskReport> reports = []) {
-        Table table = new Table();
+    void reportInit() {
+        table = new Table();
         table.addHeader("#", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
         table.addHeader("Action", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
         table.addHeader("Operation", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
         table.addHeader("Status", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
         table.addHeader("Error", TableConstant.LEFT_ALIGN, TableConstant.RED);
-        Integer index = 1
+    }
+
+    void showReport() {
+        table.toTablePrint();
+    }
+
+    void addToReport(List<TaskReport> reports = []) {
         reports.each { TaskReport tr ->
             tableRowData(table, index + "", tr)
             if (tr.nestedTaskReport) {
@@ -156,7 +172,6 @@ class DevOpsTool implements PluginRegistry {
             }
             index++
         }
-        table.toTablePrint();
     }
 
     TaskProgressImp logPrinter() {

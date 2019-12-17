@@ -1,0 +1,8 @@
+taskName: "Create Directory Test"
+actions:
+  - action: "remove"
+    operation: "Recursive Path Directory"
+    input:
+      path: "tmp/recursive"
+      options:
+        recursive: false

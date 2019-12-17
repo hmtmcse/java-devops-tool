@@ -1,0 +1,8 @@
+taskName: "Remove Directory Test"
+actions:
+  - action: "remove"
+    operation: "Remove Directory"
+    input:
+      path: "tmp/bismillah"
+      options:
+        recursive: false

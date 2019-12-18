@@ -28,6 +28,7 @@ class DevOpsTool implements PluginRegistry {
     private YmlProcessor ymlProcessor
     private Table table;
     private Integer index = 1;
+    private List<TaskReport> fullReport = []
 
     public DevOpsTool() {
         initBuiltInPlugin()
@@ -126,7 +127,7 @@ class DevOpsTool implements PluginRegistry {
                 }
             }
         }
-        addToReport(reports)
+        fullReport.addAll(reports)
     }
 
     private void tableRowData(Table table, String index, TaskReport tr) {
@@ -159,10 +160,14 @@ class DevOpsTool implements PluginRegistry {
     }
 
     void showReport() {
-        table.toTablePrint();
+        consoleTableReport(this.fullReport)
     }
 
-    void addToReport(List<TaskReport> reports = []) {
+    List<TaskReport> getReport() {
+        return this.fullReport
+    }
+
+    void consoleTableReport(List<TaskReport> reports = []) {
         reports.each { TaskReport tr ->
             tableRowData(table, index + "", tr)
             if (tr.nestedTaskReport) {
@@ -172,6 +177,7 @@ class DevOpsTool implements PluginRegistry {
             }
             index++
         }
+        table.toTablePrint();
     }
 
     TaskProgressImp logPrinter() {

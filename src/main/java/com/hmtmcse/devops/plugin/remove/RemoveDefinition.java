@@ -25,10 +25,17 @@ public class RemoveDefinition implements PluginDefinition<Remove> {
                 return taskReport;
             }
 
+            if (taskInput.getInput().options.removeIfExist){
+                if (!fileDirectory.isExist(path)){
+                    taskReport.success(taskInput.getAction(), "File / Directory Not Exist");
+                    return taskReport;
+                }
+            }
+
             if (taskInput.getInput().options.recursive) {
-                fileDirectory.removeAll(taskInput.getInput().path);
+                fileDirectory.removeAll(path);
             } else {
-                fileDirectory.remove(taskInput.getInput().path);
+                fileDirectory.remove(path);
             }
 
             taskReport.success(taskInput.getAction(), taskInput.getOperation());

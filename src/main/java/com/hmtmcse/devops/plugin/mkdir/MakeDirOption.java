@@ -6,6 +6,7 @@ public class MakeDirOption extends ExitOnFailed {
 
     public Boolean recursive = true;
     public Boolean removeDest = false;
+    public Boolean createIfNotExist = true;
 
     public Boolean getRecursive() {
         return recursive;

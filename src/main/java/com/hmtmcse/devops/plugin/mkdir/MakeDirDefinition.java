@@ -29,10 +29,17 @@ public class MakeDirDefinition implements PluginDefinition<MakeDir> {
                 taskReport.nested().success("delete", "Delete Destination");
             }
 
+            if (taskInput.getInput().options.createIfNotExist) {
+                if (!fileDirectory.isExist(path)) {
+                    taskReport.success(taskInput.getAction(), "Directory Already Exist");
+                    return taskReport;
+                }
+            }
+
             if (taskInput.getInput().options.recursive) {
-                fileDirectory.createDirectories(taskInput.getInput().path);
+                fileDirectory.createDirectories(path);
             } else {
-                fileDirectory.createDirectory(taskInput.getInput().path);
+                fileDirectory.createDirectory(path);
             }
 
             taskReport.success(taskInput.getAction(), taskInput.getOperation());

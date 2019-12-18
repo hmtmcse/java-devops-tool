@@ -9,13 +9,19 @@ public class TaskReport {
     public String action;
     public String operation;
     public String error;
+    public String message;
     public List<TaskReport> nestedTaskReport = new ArrayList<>();
     private Integer tmpIndex;
 
     public TaskReport success(String action, String operation){
+        return this.success(action, operation, null);
+    }
+
+    public TaskReport success(String action, String operation, String message){
         this.status = Status.SUCCESS;
         this.action = action;
         this.operation = operation;
+        this.message = message;
         return this;
     }
 

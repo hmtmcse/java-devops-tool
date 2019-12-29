@@ -2,15 +2,23 @@ package com.hmtmcse.devops.plugin.softlink;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
+import java.util.LinkedHashMap;
+
 public class SoftLinkInput implements TaskInput<SoftLink> {
 
     public String action;
     public String operation;
     public SoftLink input = new SoftLink();
+    public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
     @Override
     public String getAction() {
         return action;
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getMessages() {
+        return this.messages;
     }
 
     @Override

@@ -1,16 +1,23 @@
 package com.hmtmcse.devops.plugin.findreplace;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
+import java.util.LinkedHashMap;
 
 public class FindReplaceInput implements TaskInput<FindReplace> {
 
     public String action;
     public String operation;
     public FindReplace input = new FindReplace();
+    public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
     @Override
     public String getAction() {
         return action;
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getMessages() {
+        return this.messages;
     }
 
     @Override

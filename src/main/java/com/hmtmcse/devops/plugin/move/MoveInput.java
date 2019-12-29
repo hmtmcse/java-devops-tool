@@ -2,15 +2,23 @@ package com.hmtmcse.devops.plugin.move;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
+import java.util.LinkedHashMap;
+
 public class MoveInput implements TaskInput<Move> {
 
     public String action;
     public String operation;
     public Move input = new Move();
+    public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
     @Override
     public String getAction() {
         return action;
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getMessages() {
+        return this.messages;
     }
 
     @Override

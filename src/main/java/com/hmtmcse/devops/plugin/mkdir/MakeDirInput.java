@@ -2,15 +2,23 @@ package com.hmtmcse.devops.plugin.mkdir;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
+import java.util.LinkedHashMap;
+
 public class MakeDirInput implements TaskInput<MakeDir> {
 
     public String action;
     public String operation;
     public MakeDir input;
+    public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
     @Override
     public String getAction() {
         return this.action;
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getMessages() {
+        return this.messages;
     }
 
     @Override

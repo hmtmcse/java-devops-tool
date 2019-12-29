@@ -1,16 +1,23 @@
 package com.hmtmcse.devops.plugin.copy;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
+import java.util.LinkedHashMap;
 
 public class CopyInput implements TaskInput<Copy> {
 
     public String action;
     public String operation;
     public Copy input = new Copy();
+    public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
     @Override
     public String getAction() {
         return action;
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getMessages() {
+        return this.messages;
     }
 
     @Override

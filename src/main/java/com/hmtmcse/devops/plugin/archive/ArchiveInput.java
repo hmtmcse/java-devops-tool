@@ -2,15 +2,23 @@ package com.hmtmcse.devops.plugin.archive;
 
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 
+import java.util.LinkedHashMap;
+
 public class ArchiveInput implements TaskInput<Archive> {
 
     public String action;
     public String operation;
     public Archive input = new Archive();
+    public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
     @Override
     public String getAction() {
         return action;
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getMessages() {
+        return this.messages;
     }
 
     @Override

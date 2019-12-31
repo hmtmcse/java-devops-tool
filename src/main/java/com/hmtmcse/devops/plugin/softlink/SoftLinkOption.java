@@ -1,5 +1,7 @@
 package com.hmtmcse.devops.plugin.softlink;
 
-public class SoftLinkOption {
+import com.hmtmcse.devops.data.ExitOnFailed;
+
+public class SoftLinkOption extends ExitOnFailed {
     public String example;
 }

@@ -1,5 +1,8 @@
 package com.hmtmcse.devops.plugin.shell;
 
-public class ShellOption {
+import com.hmtmcse.devops.data.ExitOnFailed;
+
+public class ShellOption extends ExitOnFailed {
+
     public String example;
 }

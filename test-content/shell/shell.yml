@@ -1,0 +1,16 @@
+taskName: "Sample Task"
+actions:
+  - action: "shell"
+    operation: "Example of Shell Plugin."
+    input:
+      commands:
+        - name: "Ping HMTM Site"
+          command: "ping hmtmcse.com"
+        - name: "Ping Google"
+          command: "ping google.com"
+        - name: "Invalid Command"
+          command: "which git"
+      options:
+        isExitOnFailed: false
+        isPrintInConsole: true
+    messages: {}

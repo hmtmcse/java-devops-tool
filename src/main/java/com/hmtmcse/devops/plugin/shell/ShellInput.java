@@ -11,6 +11,9 @@ public class ShellInput implements TaskInput<Shell> {
     public Shell input = new Shell();
     public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
+    public ShellInput() {
+        messages = ShellMessage.instance().messages;
+    }
 
     @Override
     public String getAction() {

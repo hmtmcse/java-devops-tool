@@ -117,7 +117,9 @@ class DevOpsTool implements PluginRegistry {
                             }
                             return
                         }
-                        reports.add(taskReport)
+                        if (taskReport){
+                            reports.add(taskReport)
+                        }
                     }
                 }
             } catch (DevOpsException exception) {
@@ -132,6 +134,9 @@ class DevOpsTool implements PluginRegistry {
 
     private void tableRowData(Table table, String index, TaskReport tr) {
         TableRowData rowData = table.setRowData(index);
+        if (tr == null){
+            return;
+        }
         rowData.add(tr.action);
         rowData.add(tr.operation);
         if (tr.status == Status.SUCCESS) {

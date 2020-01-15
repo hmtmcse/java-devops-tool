@@ -7,6 +7,7 @@ public class Shell {
 
     public String runFromPath;
     public LinkedHashMap<String, String> environmentVariable;
-    public List<String> commands;
+    public List<ShellCommand> commands;
     public ShellOption options = new ShellOption();
+
 }

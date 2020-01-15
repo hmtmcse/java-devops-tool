@@ -100,6 +100,11 @@ class DevOpsTool implements PluginRegistry {
         }
     }
 
+    void executeTaskPrintReport(String location, Map<String, String> keywords = [:]) {
+        executeTask(location, keywords)
+        showReport()
+    }
+
     void executeTask(String location, Map<String, String> keywords = [:]) {
         List<TaskReport> reports = []
         TaskDescriptor taskDescriptor = ymlProcessor.ymlFileToObject(location, keywords)

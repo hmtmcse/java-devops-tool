@@ -3,15 +3,15 @@ package com.hmtmcse.devops.system.processor
 import com.hmtmcse.devops.data.TaskDescriptor
 import com.hmtmcse.devops.data.TaskVariable
 import com.hmtmcse.jtfutil.parser.JacksonYml
-import com.hmtmcse.jtfutil.parser.YmlReader
 import com.hmtmcse.jtfutil.text.ReadWriteTextFile
 import com.hmtmcse.jtfutil.text.TextFileData
+import com.hmtmcse.parser4java.YamlProcessor
 
-class YmlProcessor {
+class DevOpsYmlProcessor {
 
 
     public String objectToYmlString(Object object){
-        JacksonYml jacksonYml = new JacksonYml()
+        YamlProcessor jacksonYml = new YamlProcessor()
         return jacksonYml.klassToString(object);
     }
 

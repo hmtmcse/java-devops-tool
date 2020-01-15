@@ -20,12 +20,12 @@ import com.hmtmcse.devops.plugin.shell.ShellDescriptor
 import com.hmtmcse.devops.plugin.softlink.SoftLinkDescriptor
 import com.hmtmcse.devops.system.common.DevOpsException
 import com.hmtmcse.devops.system.plugin.PluginRegistry
-import com.hmtmcse.devops.system.processor.YmlProcessor
+import com.hmtmcse.devops.system.processor.DevOpsYmlProcessor
 import com.hmtmcse.devops.system.skeleton.PluginDefinition
 
 class DevOpsTool implements PluginRegistry {
 
-    private YmlProcessor ymlProcessor
+    private DevOpsYmlProcessor ymlProcessor
     private Table table;
     private Integer index = 1;
     private List<TaskReport> fullReport = []
@@ -33,7 +33,7 @@ class DevOpsTool implements PluginRegistry {
     public DevOpsTool() {
         initBuiltInPlugin()
         initPluginJar()
-        ymlProcessor = new YmlProcessor()
+        ymlProcessor = new DevOpsYmlProcessor()
         reportInit()
     }
 
@@ -56,7 +56,7 @@ class DevOpsTool implements PluginRegistry {
         TaskDescriptorExample taskDescriptor = new TaskDescriptorExample()
         taskDescriptor.taskName = "Sample Task"
 
-        ymlProcessor = new YmlProcessor()
+        ymlProcessor = new DevOpsYmlProcessor()
         getAllPlugins().each { String name, PluginDefinition pluginDefinition ->
             if (pluginDefinition.dataFullExample()) {
                 taskDescriptor.actions.add(pluginDefinition.dataFullExample())

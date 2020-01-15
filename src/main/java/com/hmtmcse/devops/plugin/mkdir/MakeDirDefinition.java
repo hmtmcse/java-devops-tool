@@ -16,6 +16,8 @@ public class MakeDirDefinition implements PluginDefinition<MakeDir> {
     public TaskReport executeTask(TaskInput<MakeDir> taskInput, TaskProgress taskProgress) throws DevOpsException {
 
         TaskReport taskReport = new TaskReport();
+        taskReport.taskProgress = taskProgress;
+
         try {
             FileDirectory fileDirectory = new FileDirectory();
             String path = taskInput.getInput().path;
@@ -46,7 +48,7 @@ public class MakeDirDefinition implements PluginDefinition<MakeDir> {
         } catch (FileUtilException e) {
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), e.getMessage());
             if (taskInput.getInput().options.isExitOnFailed) {
-                taskProgress.errorThrowException(e.getMessage(), taskReport);
+                throw new DevOpsException(e.getMessage()).setTaskReport(taskReport);
             }
         }
         return taskReport;

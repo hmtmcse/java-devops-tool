@@ -13,7 +13,9 @@ public class FindReplaceDescriptor implements PluginDefinition<FindReplace> {
     @Override
     public TaskReport executeTask(TaskInput<FindReplace> taskInput, TaskProgress taskProgress) throws DevOpsException {
         System.out.println("Yes Buddy: FindReplaceDescriptor");
-        return null;
+        TaskReport taskReport = new TaskReport();
+        taskReport.taskProgress = taskProgress;
+        return taskReport;
     }
 
     @Override

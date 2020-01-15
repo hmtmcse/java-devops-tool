@@ -13,7 +13,9 @@ public class ArchiveDescriptor implements PluginDefinition<Archive> {
     @Override
     public TaskReport executeTask(TaskInput<Archive> taskInput, TaskProgress taskProgress) throws DevOpsException {
         System.out.println("Yes Buddy: ArchiveDescriptor");
-        return null;
+        TaskReport taskReport = new TaskReport();
+        taskReport.taskProgress = taskProgress;
+        return taskReport;
     }
 
     @Override

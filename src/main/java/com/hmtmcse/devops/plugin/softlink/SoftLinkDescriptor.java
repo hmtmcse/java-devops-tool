@@ -14,7 +14,9 @@ public class SoftLinkDescriptor implements PluginDefinition<SoftLink> {
     @Override
     public TaskReport executeTask(TaskInput<SoftLink> taskInput, TaskProgress taskProgress) throws DevOpsException {
         System.out.println("Yes Buddy: SoftLinkDescriptor");
-        return null;
+        TaskReport taskReport = new TaskReport();
+        taskReport.taskProgress = taskProgress;
+        return taskReport;
     }
 
     @Override

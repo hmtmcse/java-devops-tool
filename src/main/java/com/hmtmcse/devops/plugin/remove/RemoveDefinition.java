@@ -17,6 +17,7 @@ public class RemoveDefinition implements PluginDefinition<Remove> {
     @Override
     public TaskReport executeTask(TaskInput<Remove> taskInput, TaskProgress taskProgress) throws DevOpsException {
         TaskReport taskReport = new TaskReport();
+        taskReport.taskProgress = taskProgress;
         try {
             FileDirectory fileDirectory = new FileDirectory();
             String path = taskInput.getInput().path;
@@ -42,7 +43,7 @@ public class RemoveDefinition implements PluginDefinition<Remove> {
         } catch (FileUtilException e) {
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), e.getMessage());
             if (taskInput.getInput().options.isExitOnFailed) {
-                taskProgress.errorThrowException(e.getMessage(), taskReport);
+                throw new DevOpsException(e.getMessage()).setTaskReport(taskReport);
             }
         }
         return taskReport;

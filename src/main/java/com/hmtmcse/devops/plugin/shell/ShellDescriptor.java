@@ -5,6 +5,7 @@ import com.hmtmcse.devops.system.common.DevOpsException;
 import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 import com.hmtmcse.devops.system.skeleton.TaskProgress;
+import com.hmtmcse.shellutil.base.CmdOutputLineCallBack;
 import com.hmtmcse.shellutil.base.CommandRequest;
 import com.hmtmcse.shellutil.base.CommandResponse;
 import com.hmtmcse.shellutil.base.OSCommandExec;
@@ -22,6 +23,7 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
         OSCommandExec osCommandExec = new OSCommandExec();
         CommandResponse commandResponse = null;
         TaskReport taskReport = new TaskReport();
+        taskReport.taskProgress = taskProgress;
 
         Shell shellInput = taskInput.getInput();
         ShellOption options = shellInput.options;
@@ -29,6 +31,13 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
         if (shellInput.runFromPath != null) {
             commandRequest.setCommandHome(shellInput.runFromPath);
         }
+
+        commandRequest.cmdOutputLineCallBack = new CmdOutputLineCallBack() {
+            @Override
+            public void eachLine(String line, OSCommandExec osCommandExec) {
+                taskProgress.message(line);
+            }
+        };
 
         commandRequest.setPrintInConsole(options.isPrintInConsole);
         String message;

@@ -22,6 +22,7 @@ import com.hmtmcse.devops.system.common.DevOpsException
 import com.hmtmcse.devops.system.plugin.PluginRegistry
 import com.hmtmcse.devops.system.processor.DevOpsYmlProcessor
 import com.hmtmcse.devops.system.skeleton.PluginDefinition
+import com.hmtmcse.devops.system.skeleton.TaskProgress
 
 class DevOpsTool implements PluginRegistry {
 
@@ -29,6 +30,7 @@ class DevOpsTool implements PluginRegistry {
     private Table table;
     private Integer index = 1;
     private List<TaskReport> fullReport = []
+    public TaskProgress taskProgress = new TaskProgressImp()
 
     public DevOpsTool() {
         initBuiltInPlugin()
@@ -186,7 +188,7 @@ class DevOpsTool implements PluginRegistry {
     }
 
     TaskProgressImp logPrinter() {
-        return new TaskProgressImp()
+        return taskProgress
     }
 
 }

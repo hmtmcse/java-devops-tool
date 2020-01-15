@@ -13,8 +13,10 @@ public class MoveDescriptor implements PluginDefinition<Move> {
 
     @Override
     public TaskReport executeTask(TaskInput<Move> taskInput, TaskProgress taskProgress) throws DevOpsException {
+        TaskReport taskReport = new TaskReport();
+        taskReport.taskProgress = taskProgress;
         System.out.println("Yes Buddy: MoveDescriptor");
-        return null;
+        return taskReport;
     }
 
     @Override

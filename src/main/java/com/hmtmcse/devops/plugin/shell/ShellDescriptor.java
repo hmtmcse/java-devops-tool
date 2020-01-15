@@ -40,6 +40,7 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
         };
 
         commandRequest.setPrintInConsole(options.isPrintInConsole);
+        commandRequest.setWaitUntilFinish(true);
         String message;
 
         if (shellInput.commands != null) {

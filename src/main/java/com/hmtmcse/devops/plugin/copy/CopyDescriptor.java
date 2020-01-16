@@ -62,6 +62,7 @@ public class CopyDescriptor implements PluginDefinition<Copy> {
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), e.getMessage());
             throw new DevOpsException(e.getMessage()).setTaskReport(taskReport);
         }
+        taskReport.success(taskInput.getAction(), taskInput.getOperation());
         return taskReport;
     }
 

@@ -16,7 +16,7 @@ class DevOpsYmlProcessor {
     }
 
     public TaskVariable ymlFileToVariable(String location) {
-        JacksonYml jacksonYml = new JacksonYml()
+        YamlProcessor jacksonYml = new YamlProcessor()
         return jacksonYml.ymlAsNestedKlass(location, TaskVariable.class)
     }
 

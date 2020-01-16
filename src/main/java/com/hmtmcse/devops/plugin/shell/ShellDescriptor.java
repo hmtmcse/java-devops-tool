@@ -47,12 +47,16 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
         MessageHelper messageHelper = new MessageHelper(new ShellMessage(), taskInput.getMessages());
         if (shellInput.commands != null) {
             taskReport.success(taskInput.getAction(), taskInput.getOperation());
+            ShellCommand originalCommand;
             for (ShellCommand command : shellInput.commands) {
                 if (command.command != null) {
                     if (command.loop == null) {
                         command.addLoopItem("_THIS_IS_VERY_DUMMY_DATA_" + TMUtil.randomInteger());
                     }
-                    for (String loopItem : command.loop) {
+
+                    originalCommand = command.copy();
+                    for (String loopItem : originalCommand.loop) {
+                        command = originalCommand.copy();
                         command.replace(loopItem);
                         commandRequest.command = this.stringToArray(command.command);
                         if (commandRequest.command != null) {

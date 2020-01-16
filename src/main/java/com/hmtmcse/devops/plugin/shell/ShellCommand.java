@@ -25,6 +25,14 @@ public class ShellCommand {
         return this;
     }
 
+    public ShellCommand copy() {
+        ShellCommand shellCommand = new ShellCommand();
+        shellCommand.name = this.name;
+        shellCommand.loop = this.loop;
+        shellCommand.command = this.command;
+        return shellCommand;
+    }
+
     public ShellCommand replace(String data){
         this.name = findReplace(this.name, data);
         this.command = findReplace(this.command, data);

@@ -26,12 +26,12 @@ public class CopyDescriptor implements PluginDefinition<Copy> {
         MessageHelper messageHelper = new MessageHelper(new CopyMessage(), taskInput.getMessages());
 
         if (input.source == null || !fileDirectory.isExist(input.source)) {
-            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(CopyConstant.INVALID_INPUT + " Source"));
+            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(CopyConstant.INVALID_SOURCE));
             return taskReport;
         }
 
         if (input.target == null || !fileDirectory.isExist(input.target)) {
-            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(CopyConstant.INVALID_INPUT + " Target"));
+            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(CopyConstant.INVALID_TARGET));
             return taskReport;
         }
 

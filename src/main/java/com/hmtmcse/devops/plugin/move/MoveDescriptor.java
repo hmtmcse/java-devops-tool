@@ -27,12 +27,12 @@ public class MoveDescriptor implements PluginDefinition<Move> {
         MessageHelper messageHelper = new MessageHelper(new MoveMessage(), taskInput.getMessages());
 
         if (input.source == null || !fileDirectory.isExist(input.source)) {
-            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(MoveConstant.INVALID_INPUT + " Source"));
+            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(MoveConstant.INVALID_SOURCE));
             return taskReport;
         }
 
         if (input.target == null || !fileDirectory.isExist(input.target)) {
-            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(MoveConstant.INVALID_INPUT + " Target"));
+            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(MoveConstant.INVALID_TARGET));
             return taskReport;
         }
 

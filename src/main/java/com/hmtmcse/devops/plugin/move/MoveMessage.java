@@ -9,7 +9,8 @@ public class MoveMessage implements DefaultMessage {
     public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
     public MoveMessage(){
-        messages.put(MoveConstant.INVALID_INPUT, "Invalid or Null input");
+        messages.put(MoveConstant.INVALID_SOURCE, "Invalid or Null Source");
+        messages.put(MoveConstant.INVALID_TARGET, "Invalid or Null Target");
     }
 
     public static MoveMessage instance(){

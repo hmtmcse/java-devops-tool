@@ -1,0 +1,10 @@
+taskName: "Sample Task"
+actions:
+  - action: "move"
+    operation: "Move Binary from source to storage."
+    input:
+      source: "C:\\Users\\touhid\\Desktop\\temp\\xyz\\xyz"
+      target: "C:\\Users\\touhid\\Desktop\\temp\\xyz\\xyza"
+      options:
+        removeIfExist: true
+        removeIfExistx: true

@@ -7,8 +7,9 @@ import com.hmtmcse.devops.system.skeleton.PluginDefinition;
 import com.hmtmcse.devops.system.skeleton.TaskInput;
 import com.hmtmcse.devops.system.skeleton.TaskProgress;
 import com.hmtmcse.fileutil.common.FileUtilException;
-import com.hmtmcse.fileutil.data.JDCopyOption;
 import com.hmtmcse.fileutil.fd.FileDirectory;
+import java.nio.file.LinkOption;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,26 +37,26 @@ public class CopyDescriptor implements PluginDefinition<Copy> {
         }
 
         try {
-            List<JDCopyOption> options = new ArrayList<>();
+            List<java.nio.file.CopyOption> options = new ArrayList<>();
             if (moveOption != null) {
                 if (moveOption.removeIfExist && fileDirectory.isExist(input.target)) {
                     fileDirectory.removeAll(input.target);
                 }
 
                 if (moveOption.replaceExisting) {
-                    options.add(JDCopyOption.REPLACE_EXISTING);
+                    options.add(StandardCopyOption.REPLACE_EXISTING);
                 }
                 if (moveOption.noFollowLinks) {
-                    options.add(JDCopyOption.NOFOLLOW_LINKS);
+                    options.add(LinkOption.NOFOLLOW_LINKS);
                 }
                 if (moveOption.copyAttributes) {
-                    options.add(JDCopyOption.COPY_ATTRIBUTES);
+                    options.add(StandardCopyOption.COPY_ATTRIBUTES);
                 }
             }
             if (options.size() == 0) {
                 fileDirectory.copyAll(input.source, input.target);
             } else {
-                fileDirectory.copyAll(input.source, input.target, options.toArray(new JDCopyOption[0]));
+                fileDirectory.copyAll(input.source, input.target, options.toArray(new java.nio.file.CopyOption[0]));
             }
         } catch (FileUtilException e) {
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), e.getMessage());

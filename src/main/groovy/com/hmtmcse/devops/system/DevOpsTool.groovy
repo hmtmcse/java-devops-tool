@@ -1,5 +1,6 @@
 package com.hmtmcse.devops.system
 
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.hmtmcse.console.table.common.TableConstant
 import com.hmtmcse.console.table.data.Table
@@ -110,6 +111,7 @@ class DevOpsTool implements PluginRegistry {
         TaskDescriptor taskDescriptor = ymlProcessor.ymlFileToObject(location, keywords)
         if (taskDescriptor.actions) {
             ObjectMapper objectMapper = new ObjectMapper()
+            objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
             PluginDefinition pluginDefinition
             TaskReport taskReport
             try {

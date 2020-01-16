@@ -164,11 +164,11 @@ class DevOpsTool implements PluginRegistry {
 
     void reportInit() {
         table = new Table();
-        table.addHeader("#", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
-        table.addHeader("Action", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
-        table.addHeader("Operation", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
-        table.addHeader("Status", TableConstant.LEFT_ALIGN, TableConstant.BLUE);
-        table.addHeader("Error", TableConstant.LEFT_ALIGN, TableConstant.RED);
+        table.addHeader("#", TableConstant.LEFT_ALIGN, TableConstant.YELLOW);
+        table.addHeader("Action", TableConstant.LEFT_ALIGN, TableConstant.YELLOW);
+        table.addHeader("Operation", TableConstant.LEFT_ALIGN, TableConstant.YELLOW);
+        table.addHeader("Status", TableConstant.LEFT_ALIGN, TableConstant.YELLOW);
+        table.addHeader("Message", TableConstant.LEFT_ALIGN, TableConstant.YELLOW);
     }
 
     void showReport() {

@@ -38,14 +38,14 @@ public class MoveDescriptor implements PluginDefinition<Move> {
 
         try {
             List<StandardCopyOption> options = new ArrayList<>();
-            if (moveOption != null) {
-                if (moveOption.removeIfExist && fileDirectory.isExist(input.target)) {
-                    fileDirectory.removeAll(input.target);
-                }
-                if (moveOption.replaceExisting) {
-                    options.add(StandardCopyOption.REPLACE_EXISTING);
-                }
-            }
+//            if (moveOption != null) {
+//                if (moveOption.removeIfExist && fileDirectory.isExist(input.target)) {
+//                    fileDirectory.removeAll(input.target);
+//                }
+//                if (moveOption.replaceExisting) {
+//                    options.add(StandardCopyOption.REPLACE_EXISTING);
+//                }
+//            }
             System.out.println("input.source: " + input.source);
             System.out.println("input.target: " + input.target);
             System.out.println("options.size(): " + options.size());

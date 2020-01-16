@@ -2,21 +2,21 @@ package com.hmtmcse.devops.system.processor
 
 import com.hmtmcse.devops.data.TaskDescriptor
 import com.hmtmcse.devops.data.TaskVariable
-import com.hmtmcse.jtfutil.parser.JacksonYml
 import com.hmtmcse.jtfutil.text.ReadWriteTextFile
 import com.hmtmcse.jtfutil.text.TextFileData
 import com.hmtmcse.parser4java.YamlProcessor
+
 
 class DevOpsYmlProcessor {
 
     private YamlProcessor yamlProcessor
 
-    public DevOpsYmlProcessor(){
+    public DevOpsYmlProcessor() {
         yamlProcessor = new YamlProcessor()
     }
 
 
-    public String objectToYmlString(Object object){
+    public String objectToYmlString(Object object) {
         return yamlProcessor.klassToString(object);
     }
 
@@ -36,6 +36,7 @@ class DevOpsYmlProcessor {
         }
         return content
     }
+
 
     public TaskDescriptor ymlFileToObject(String location, Map<String, String> keywords = [:]) {
         String content = findReplaceKeyword(location, keywords)

@@ -1,5 +1,6 @@
 package com.hmtmcse.devops.plugin.shell;
 
+import com.hmtmcse.common.util.TMUtil;
 import com.hmtmcse.devops.common.MessageHelper;
 import com.hmtmcse.devops.data.TaskReport;
 import com.hmtmcse.devops.system.common.DevOpsException;
@@ -48,18 +49,24 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
             taskReport.success(taskInput.getAction(), taskInput.getOperation());
             for (ShellCommand command : shellInput.commands) {
                 if (command.command != null) {
-                    commandRequest.command = this.stringToArray(command.command);
-                    if (commandRequest.command != null) {
-                        commandResponse = osCommandExec.execute(commandRequest);
-                        message = messageHelper.getMessageIfNull(ShellConstant.TASK_NAME, command.name, index);
-                        if (commandResponse != null && commandResponse.isExecuted) {
-                            taskReport.nested().success(taskInput.getAction(), message + ". Exit Code: " + commandResponse.exitCode);
-                        } else {
-                            message = message + ". Exit Code: " + commandResponse.exitCode + ". Command: " + command.command;
-                            taskReport.nested().failed(taskInput.getAction(), message, commandResponse.exceptionMessage);
-                        }
+                    if (command.loop == null) {
+                        command.addLoopItem("_THIS_IS_VERY_DUMMY_DATA_" + TMUtil.randomInteger());
                     }
-                    index++;
+                    for (String loopItem : command.loop) {
+                        command.replace(loopItem);
+                        commandRequest.command = this.stringToArray(command.command);
+                        if (commandRequest.command != null) {
+                            commandResponse = osCommandExec.execute(commandRequest);
+                            message = messageHelper.getMessageIfNull(ShellConstant.TASK_NAME, command.name, index);
+                            if (commandResponse != null && commandResponse.isExecuted) {
+                                taskReport.nested().success(taskInput.getAction(), message + ". Exit Code: " + commandResponse.exitCode);
+                            } else {
+                                message = message + ". Exit Code: " + commandResponse.exitCode + ". Command: " + command.command;
+                                taskReport.nested().failed(taskInput.getAction(), message, commandResponse.exceptionMessage);
+                            }
+                        }
+                        index++;
+                    }
                 }
             }
         } else {

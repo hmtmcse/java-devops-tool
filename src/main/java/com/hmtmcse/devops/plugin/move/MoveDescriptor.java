@@ -52,6 +52,7 @@ public class MoveDescriptor implements PluginDefinition<Move> {
                 fileDirectory.move(input.source, input.target, options.toArray(new StandardCopyOption[0]));
             }
         } catch (FileUtilException e) {
+            System.err.println(e.getMessage());
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), e.getMessage());
             throw new DevOpsException(e.getMessage()).setTaskReport(taskReport);
         }

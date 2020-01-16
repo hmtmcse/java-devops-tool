@@ -9,15 +9,19 @@ import com.hmtmcse.parser4java.YamlProcessor
 
 class DevOpsYmlProcessor {
 
+    private YamlProcessor yamlProcessor
+
+    public DevOpsYmlProcessor(){
+        yamlProcessor = new YamlProcessor()
+    }
+
 
     public String objectToYmlString(Object object){
-        YamlProcessor jacksonYml = new YamlProcessor()
-        return jacksonYml.klassToString(object);
+        return yamlProcessor.klassToString(object);
     }
 
     public TaskVariable ymlFileToVariable(String location) {
-        YamlProcessor jacksonYml = new YamlProcessor()
-        return jacksonYml.ymlAsNestedKlass(location, TaskVariable.class)
+        return yamlProcessor.ymlAsNestedKlass(location, TaskVariable.class)
     }
 
     public String findReplaceKeyword(String location, Map<String, String> keywords = [:]) {
@@ -35,8 +39,7 @@ class DevOpsYmlProcessor {
 
     public TaskDescriptor ymlFileToObject(String location, Map<String, String> keywords = [:]) {
         String content = findReplaceKeyword(location, keywords)
-        JacksonYml jacksonYml = new JacksonYml()
-        return jacksonYml.ymlAsNestedKlassFromString(content, TaskDescriptor.class)
+        return yamlProcessor.ymlAsNestedKlassFromString(content, TaskDescriptor.class)
     }
 
 }

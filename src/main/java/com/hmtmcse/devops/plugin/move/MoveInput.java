@@ -11,6 +11,11 @@ public class MoveInput implements TaskInput<Move> {
     public Move input = new Move();
     public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
+
+    public MoveInput() {
+        this.messages = MoveMessage.instance().messages;
+    }
+
     @Override
     public String getAction() {
         return action;

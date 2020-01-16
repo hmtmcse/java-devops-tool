@@ -5,4 +5,4 @@ actions:
     input:
       path: "tmp/bismillah"
       options:
-        recursive: false
+        removeIfExist: true

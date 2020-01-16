@@ -1,5 +1,6 @@
 package com.hmtmcse.devops.plugin.shell;
 
+import com.hmtmcse.devops.common.MessageHelper;
 import com.hmtmcse.devops.data.TaskReport;
 import com.hmtmcse.devops.system.common.DevOpsException;
 import com.hmtmcse.devops.system.skeleton.PluginDefinition;
@@ -42,7 +43,7 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
         commandRequest.setPrintInConsole(options.isPrintInConsole);
         commandRequest.setWaitUntilFinish(true);
         String message;
-
+        MessageHelper messageHelper = new MessageHelper(new ShellMessage(), taskInput.getMessages());
         if (shellInput.commands != null) {
             taskReport.success(taskInput.getAction(), taskInput.getOperation());
             for (ShellCommand command : shellInput.commands) {
@@ -50,7 +51,7 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
                     commandRequest.command = this.stringToArray(command.command);
                     if (commandRequest.command != null) {
                         commandResponse = osCommandExec.execute(commandRequest);
-                        message = this.getMessage(ShellConstant.TASK_NAME, command.name);
+                        message = messageHelper.getMessageIfNull(ShellConstant.TASK_NAME, command.name, index);
                         if (commandResponse != null && commandResponse.isExecuted) {
                             taskReport.nested().success(taskInput.getAction(), message + ". Exit Code: " + commandResponse.exitCode);
                         } else {
@@ -62,21 +63,11 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
                 }
             }
         } else {
-            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), this.getMessage(ShellConstant.EMPTY_ACTION, taskInput.getMessages().get(ShellConstant.EMPTY_ACTION)));
+            taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(ShellConstant.EMPTY_ACTION));
         }
         return taskReport;
     }
 
-
-    private String getMessage(String key, String message) {
-        if (message != null) {
-            return message;
-        }
-        if (ShellMessage.instance().messages.get(key) != null) {
-            return ShellMessage.instance().messages.get(key) + " " + index;
-        }
-        return "No Message";
-    }
 
 
     private String[] stringToArray(String command) {

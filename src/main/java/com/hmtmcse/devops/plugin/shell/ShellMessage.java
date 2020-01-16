@@ -1,8 +1,10 @@
 package com.hmtmcse.devops.plugin.shell;
 
+import com.hmtmcse.devops.data.common.DefaultMessage;
+
 import java.util.LinkedHashMap;
 
-public class ShellMessage {
+public class ShellMessage implements DefaultMessage {
 
     public LinkedHashMap<String, String> messages = new LinkedHashMap<>();
 
@@ -13,5 +15,10 @@ public class ShellMessage {
 
     public static ShellMessage instance(){
         return new ShellMessage();
+    }
+
+    @Override
+    public LinkedHashMap<String, String> messages() {
+        return this.messages;
     }
 }

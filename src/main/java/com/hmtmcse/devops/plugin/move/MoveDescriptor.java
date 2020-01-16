@@ -45,9 +45,6 @@ public class MoveDescriptor implements PluginDefinition<Move> {
                 if (moveOption.replaceExisting) {
                     options.add(JDCopyOption.REPLACE_EXISTING);
                 }
-                if (moveOption.noFollowLinks) {
-                    options.add(JDCopyOption.NOFOLLOW_LINKS);
-                }
             }
             if (options.size() == 0) {
                 fileDirectory.move(input.source, input.target);

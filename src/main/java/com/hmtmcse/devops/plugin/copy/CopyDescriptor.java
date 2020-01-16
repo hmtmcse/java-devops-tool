@@ -30,7 +30,7 @@ public class CopyDescriptor implements PluginDefinition<Copy> {
             return taskReport;
         }
 
-        if (input.target == null || !fileDirectory.isExist(input.target)) {
+        if (input.target == null) {
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(CopyConstant.INVALID_TARGET));
             return taskReport;
         }

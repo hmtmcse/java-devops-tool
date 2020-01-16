@@ -31,7 +31,7 @@ public class MoveDescriptor implements PluginDefinition<Move> {
             return taskReport;
         }
 
-        if (input.target == null || !fileDirectory.isExist(input.target)) {
+        if (input.target == null) {
             taskReport.failed(taskInput.getAction(), taskInput.getOperation(), messageHelper.getMessage(MoveConstant.INVALID_TARGET));
             return taskReport;
         }

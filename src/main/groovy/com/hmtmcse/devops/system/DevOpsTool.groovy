@@ -194,7 +194,7 @@ class DevOpsTool implements PluginRegistry {
         table.toTablePrint();
     }
 
-    TaskProgressImp logPrinter() {
+    TaskProgress logPrinter() {
         return taskProgress
     }
 

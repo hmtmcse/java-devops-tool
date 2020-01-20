@@ -132,7 +132,7 @@ class DevOpsTool implements PluginRegistry {
                     }
                 }
             } catch (DevOpsException exception) {
-                println(exception.getMessage())
+                println("DevOpsException: " + exception.getMessage())
                 if (exception.taskReport) {
                     reports.add(exception.taskReport)
                 }

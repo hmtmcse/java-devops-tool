@@ -37,7 +37,9 @@ public class ShellDescriptor implements PluginDefinition<Shell> {
         commandRequest.cmdOutputLineCallBack = new CmdOutputLineCallBack() {
             @Override
             public void eachLine(String line, OSCommandExec osCommandExec) {
-                taskProgress.message(line);
+                if (taskProgress != null){
+                    taskProgress.message(line);
+                }
             }
         };
 

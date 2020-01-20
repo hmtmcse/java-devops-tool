@@ -5,6 +5,7 @@ import com.hmtmcse.devops.data.TaskVariable
 import com.hmtmcse.jtfutil.text.ReadWriteTextFile
 import com.hmtmcse.jtfutil.text.TextFileData
 import com.hmtmcse.parser4java.YamlProcessor
+import com.hmtmcse.parser4java.common.Parser4JavaException
 
 
 class DevOpsYmlProcessor {
@@ -16,11 +17,11 @@ class DevOpsYmlProcessor {
     }
 
 
-    public String objectToYmlString(Object object) {
+    public String objectToYmlString(Object object) throws Parser4JavaException {
         return yamlProcessor.klassToString(object);
     }
 
-    public TaskVariable ymlFileToVariable(String location) {
+    public TaskVariable ymlFileToVariable(String location) throws Parser4JavaException {
         return yamlProcessor.ymlAsNestedKlass(location, TaskVariable.class)
     }
 
@@ -38,7 +39,7 @@ class DevOpsYmlProcessor {
     }
 
 
-    public TaskDescriptor ymlFileToObject(String location, Map<String, String> keywords = [:]) {
+    public TaskDescriptor ymlFileToObject(String location, Map<String, String> keywords = [:]) throws Parser4JavaException {
         String content = findReplaceKeyword(location, keywords)
         return yamlProcessor.ymlAsNestedKlassFromString(content, TaskDescriptor.class)
     }

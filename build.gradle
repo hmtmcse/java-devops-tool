@@ -3,6 +3,8 @@
 apply plugin : 'java'
 apply plugin : 'groovy'
 
+
+
 group 'com.hmtmcse'
 version '1.0.0'
 
@@ -41,7 +43,7 @@ dependencies {
             compile project(":" + it)
         }
     }
-    compile 'org.codehaus.groovy:groovy-all:2.5.8'
+    compile 'org.codehaus.groovy:groovy-all:2.4.11'
 }
 
 

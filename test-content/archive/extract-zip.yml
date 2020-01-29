@@ -1,0 +1,9 @@
+taskName: "Create Directory Test"
+actions:
+  - action: "archive"
+    operation: "Example of Archive Plugin."
+    input:
+      source: "G:\\server-management-app\\devops_tool\\resources\\ServerApp\\servers\\tomcat.zip"
+      output: "C:\\Users\\touhid\\Desktop\\xyz"
+      type: "zip"
+      archiveAction: "extract"

@@ -33,6 +33,7 @@ def dependencyList = [
         "java-shell-util",
         "java-text-and-file-util",
         "java-file-util",
+        "java-archive-util",
         "parser4java"
 ]
 

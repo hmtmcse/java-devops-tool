@@ -1,0 +1,5 @@
+== How to Check CRT and Key
+```
+openssl x509 -noout -modulus -in ssl-crt.crt | openssl md5
+openssl rsa -noout -modulus -in ssl-crt.key | openssl md5
+```
